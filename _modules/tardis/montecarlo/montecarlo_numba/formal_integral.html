@@ -1,0 +1,950 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>tardis.montecarlo.montecarlo_numba.formal_integral &mdash; tardis v2021.7.12.0.dev3+g7d3899ed</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/plot_directive.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/tardis_logo.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link href="../../../../_static/tardis.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> tardis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2021.7.12.0.dev3+g7d3899ed
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickstart/quickstart.html">Quickstart for TARDIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Input/Output</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/configuration/index.html">Configuration (Required Input)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/optional/index.html">Optional Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/visualization/index.html">Visualization Tools &amp; Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/output/index.html">Additional Outputs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Physics Walkthrough</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/setup/index.html">Setting Up the Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/montecarlo/index.html">Monte Carlo Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/est_and_conv/index.html">Estimators and Convergence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/spectrum/index.html">Spectrum Generation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Research with TARDIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../research/index.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team &amp; Credits</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../team_and_governance/index.html">Team and Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../credits.html">Credits &amp; Publication Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CODE_OF_CONDUCT.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../sponsors.html">Sponsors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to TARDIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CONTRIBUTING.html">Contribution Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../development/index.html">Developer Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CHANGELOG.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../roadmap.html">Development Roadmap</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/modules.html">tardis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zreferences.html">TARDIS Papers and useful References</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Outdated</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../outdated/index.html">Outdated Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tardis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tardis.montecarlo.montecarlo_numba.formal_integral</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tardis.montecarlo.montecarlo_numba.formal_integral</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scipy.sparse</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
+<span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+<span class="kn">from</span> <span class="nn">tardis</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span><span class="p">,</span> <span class="n">char</span><span class="p">,</span> <span class="n">float64</span><span class="p">,</span> <span class="n">int64</span><span class="p">,</span> <span class="n">typeof</span><span class="p">,</span> <span class="n">byte</span><span class="p">,</span> <span class="n">prange</span>
+<span class="kn">from</span> <span class="nn">numba.experimental</span> <span class="kn">import</span> <span class="n">jitclass</span>
+<span class="kn">import</span> <span class="nn">pdb</span>
+
+<span class="kn">from</span> <span class="nn">tardis.montecarlo.montecarlo_numba.numba_config</span> <span class="kn">import</span> <span class="n">SIGMA_THOMSON</span>
+<span class="kn">from</span> <span class="nn">tardis.montecarlo.montecarlo_numba</span> <span class="kn">import</span> <span class="n">njit_dict</span><span class="p">,</span> <span class="n">njit_dict_no_parallel</span>
+<span class="kn">from</span> <span class="nn">tardis.montecarlo.montecarlo_numba.numba_interface</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">numba_plasma_initialize</span><span class="p">,</span>
+    <span class="n">NumbaModel</span><span class="p">,</span>
+    <span class="n">NumbaPlasma</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">tardis.montecarlo.spectrum</span> <span class="kn">import</span> <span class="n">TARDISSpectrum</span>
+
+<span class="n">C_INV</span> <span class="o">=</span> <span class="mf">3.33564e-11</span>
+<span class="n">M_PI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">KB_CGS</span> <span class="o">=</span> <span class="mf">1.3806488e-16</span>
+<span class="n">H_CGS</span> <span class="o">=</span> <span class="mf">6.62606957e-27</span>
+
+
+<div class="viewcode-block" id="IntegrationError"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.formal_integral.html#tardis.montecarlo.montecarlo_numba.formal_integral.IntegrationError">[docs]</a><span class="k">class</span> <span class="nc">IntegrationError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="numba_formal_integral"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.formal_integral.html#tardis.montecarlo.montecarlo_numba.formal_integral.numba_formal_integral">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">numba_formal_integral</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">plasma</span><span class="p">,</span>
+    <span class="n">iT</span><span class="p">,</span>
+    <span class="n">inu</span><span class="p">,</span>
+    <span class="n">inu_size</span><span class="p">,</span>
+    <span class="n">att_S_ul</span><span class="p">,</span>
+    <span class="n">Jred_lu</span><span class="p">,</span>
+    <span class="n">Jblue_lu</span><span class="p">,</span>
+    <span class="n">tau_sobolev</span><span class="p">,</span>
+    <span class="n">electron_density</span><span class="p">,</span>
+    <span class="n">N</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    model, plasma, and estimator are the numba variants</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># todo: add all the original todos</span>
+    <span class="c1"># Initialize the output which is shared among threads</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">inu_size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="c1"># global read-only values</span>
+    <span class="n">size_line</span><span class="p">,</span> <span class="n">size_shell</span> <span class="o">=</span> <span class="n">tau_sobolev</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">size_tau</span> <span class="o">=</span> <span class="n">size_line</span> <span class="o">*</span> <span class="n">size_shell</span>
+    <span class="n">R_ph</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">r_inner</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># make sure these are cgs</span>
+    <span class="n">R_max</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">r_outer</span><span class="p">[</span><span class="n">size_shell</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">pp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>  <span class="c1"># check</span>
+    <span class="n">exp_tau</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">size_tau</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">exp_tau</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">tau_sobolev</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>  <span class="c1"># maybe make this 2D?</span>
+    <span class="n">pp</span><span class="p">[::]</span> <span class="o">=</span> <span class="n">calculate_p_values</span><span class="p">(</span><span class="n">R_max</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">line_list_nu</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">line_list_nu</span>
+    <span class="c1"># done with instantiation</span>
+    <span class="c1"># now loop over wavelength in spectrum</span>
+    <span class="k">for</span> <span class="n">nu_idx</span> <span class="ow">in</span> <span class="n">prange</span><span class="p">(</span><span class="n">inu_size</span><span class="p">):</span>
+        <span class="n">I_nu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">size_shell</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="n">shell_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">size_shell</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">size_z</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">idx_nu_start</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">direction</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">nu_start</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">nu_end</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">nu</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">zstart</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">zend</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">escat_contrib</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">escat_op</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">Jkkp</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">pexp_tau</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">patt_S_ul</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">pJred_lu</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">pJblue_lu</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">pline</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">nu</span> <span class="o">=</span> <span class="n">inu</span><span class="p">[</span><span class="n">nu_idx</span><span class="p">]</span>
+        <span class="c1"># now loop over discrete values along line</span>
+        <span class="k">for</span> <span class="n">p_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+            <span class="n">escat_contrib</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">pp</span><span class="p">[</span><span class="n">p_idx</span><span class="p">]</span>
+
+            <span class="c1"># initialize z intersections for p values</span>
+            <span class="n">size_z</span> <span class="o">=</span> <span class="n">populate_z</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">shell_id</span><span class="p">)</span>  <span class="c1"># check returns</span>
+            <span class="c1"># initialize I_nu</span>
+            <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;=</span> <span class="n">R_ph</span><span class="p">:</span>
+                <span class="n">I_nu</span><span class="p">[</span><span class="n">p_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">intensity_black_body</span><span class="p">(</span><span class="n">nu</span> <span class="o">*</span> <span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">iT</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">I_nu</span><span class="p">[</span><span class="n">p_idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="c1"># find first contributing lines</span>
+            <span class="n">nu_start</span> <span class="o">=</span> <span class="n">nu</span> <span class="o">*</span> <span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">nu_end</span> <span class="o">=</span> <span class="n">nu</span> <span class="o">*</span> <span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">idx_nu_start</span> <span class="o">=</span> <span class="n">line_search</span><span class="p">(</span><span class="n">plasma</span><span class="o">.</span><span class="n">line_list_nu</span><span class="p">,</span> <span class="n">nu_start</span><span class="p">,</span> <span class="n">size_line</span><span class="p">)</span>
+            <span class="n">offset</span> <span class="o">=</span> <span class="n">shell_id</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">size_line</span>
+            <span class="c1"># start tracking accumulated e-scattering optical depth</span>
+            <span class="n">zstart</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">time_explosion</span> <span class="o">/</span> <span class="n">C_INV</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="c1"># Initialize &quot;pointers&quot;</span>
+            <span class="n">pline</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_nu_start</span><span class="p">)</span>
+            <span class="n">pexp_tau</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">offset</span> <span class="o">+</span> <span class="n">idx_nu_start</span><span class="p">)</span>
+            <span class="n">patt_S_ul</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">offset</span> <span class="o">+</span> <span class="n">idx_nu_start</span><span class="p">)</span>
+            <span class="n">pJred_lu</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">offset</span> <span class="o">+</span> <span class="n">idx_nu_start</span><span class="p">)</span>
+            <span class="n">pJblue_lu</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">offset</span> <span class="o">+</span> <span class="n">idx_nu_start</span><span class="p">)</span>
+
+            <span class="c1"># flag for first contribution to integration on current p-ray</span>
+            <span class="n">first</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">nu_ends</span> <span class="o">=</span> <span class="n">nu</span> <span class="o">*</span> <span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="n">nu_ends_idxs</span> <span class="o">=</span> <span class="n">size_line</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span>
+                <span class="n">line_list_nu</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">nu_ends</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s2">&quot;right&quot;</span>
+            <span class="p">)</span>
+            <span class="c1"># loop over all interactions</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size_z</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">escat_op</span> <span class="o">=</span> <span class="n">electron_density</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">shell_id</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span> <span class="o">*</span> <span class="n">SIGMA_THOMSON</span>
+                <span class="n">nu_end</span> <span class="o">=</span> <span class="n">nu_ends</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="n">nu_end_idx</span> <span class="o">=</span> <span class="n">nu_ends_idxs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">nu_end_idx</span> <span class="o">-</span> <span class="n">pline</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
+
+                    <span class="c1"># calculate e-scattering optical depth to next resonance point</span>
+                    <span class="n">zend</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">model</span><span class="o">.</span><span class="n">time_explosion</span>
+                        <span class="o">/</span> <span class="n">C_INV</span>
+                        <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">line_list_nu</span><span class="p">[</span><span class="n">pline</span><span class="p">]</span> <span class="o">/</span> <span class="n">nu</span><span class="p">)</span>
+                    <span class="p">)</span>  <span class="c1"># check</span>
+
+                    <span class="k">if</span> <span class="n">first</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="c1"># first contribution to integration</span>
+                        <span class="c1"># NOTE: this treatment of I_nu_b (given</span>
+                        <span class="c1">#   by boundary conditions) is not in Lucy 1999;</span>
+                        <span class="c1">#   should be re-examined carefully</span>
+                        <span class="n">escat_contrib</span> <span class="o">+=</span> <span class="p">(</span>
+                            <span class="p">(</span><span class="n">zend</span> <span class="o">-</span> <span class="n">zstart</span><span class="p">)</span>
+                            <span class="o">*</span> <span class="n">escat_op</span>
+                            <span class="o">*</span> <span class="p">(</span><span class="n">Jblue_lu</span><span class="p">[</span><span class="n">pJblue_lu</span><span class="p">]</span> <span class="o">-</span> <span class="n">I_nu</span><span class="p">[</span><span class="n">p_idx</span><span class="p">])</span>
+                        <span class="p">)</span>
+                        <span class="n">first</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># Account for e-scattering, c.f. Eqs 27, 28 in Lucy 1999</span>
+                        <span class="n">Jkkp</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">Jred_lu</span><span class="p">[</span><span class="n">pJred_lu</span><span class="p">]</span> <span class="o">+</span> <span class="n">Jblue_lu</span><span class="p">[</span><span class="n">pJblue_lu</span><span class="p">])</span>
+                        <span class="n">escat_contrib</span> <span class="o">+=</span> <span class="p">(</span>
+                            <span class="p">(</span><span class="n">zend</span> <span class="o">-</span> <span class="n">zstart</span><span class="p">)</span> <span class="o">*</span> <span class="n">escat_op</span> <span class="o">*</span> <span class="p">(</span><span class="n">Jkkp</span> <span class="o">-</span> <span class="n">I_nu</span><span class="p">[</span><span class="n">p_idx</span><span class="p">])</span>
+                        <span class="p">)</span>
+                        <span class="c1"># this introduces the necessary ffset of one element between</span>
+                        <span class="c1"># pJblue_lu and pJred_lu</span>
+                        <span class="n">pJred_lu</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">I_nu</span><span class="p">[</span><span class="n">p_idx</span><span class="p">]</span> <span class="o">+=</span> <span class="n">escat_contrib</span>
+                    <span class="c1"># // Lucy 1999, Eq 26</span>
+                    <span class="n">I_nu</span><span class="p">[</span><span class="n">p_idx</span><span class="p">]</span> <span class="o">*=</span> <span class="n">exp_tau</span><span class="p">[</span><span class="n">pexp_tau</span><span class="p">]</span>
+                    <span class="n">I_nu</span><span class="p">[</span><span class="n">p_idx</span><span class="p">]</span> <span class="o">+=</span> <span class="n">att_S_ul</span><span class="p">[</span><span class="n">patt_S_ul</span><span class="p">]</span>
+
+                    <span class="c1"># // reset e-scattering opacity</span>
+                    <span class="n">escat_contrib</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">zstart</span> <span class="o">=</span> <span class="n">zend</span>
+
+                    <span class="n">pline</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">pexp_tau</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">patt_S_ul</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">pJblue_lu</span> <span class="o">+=</span> <span class="mi">1</span>
+
+                <span class="c1"># calculate e-scattering optical depth to grid cell boundary</span>
+
+                <span class="n">Jkkp</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">Jred_lu</span><span class="p">[</span><span class="n">pJred_lu</span><span class="p">]</span> <span class="o">+</span> <span class="n">Jblue_lu</span><span class="p">[</span><span class="n">pJblue_lu</span><span class="p">])</span>
+                <span class="n">zend</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">model</span><span class="o">.</span><span class="n">time_explosion</span> <span class="o">/</span> <span class="n">C_INV</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">nu_end</span> <span class="o">/</span> <span class="n">nu</span><span class="p">)</span>
+                <span class="p">)</span>  <span class="c1"># check</span>
+                <span class="n">escat_contrib</span> <span class="o">+=</span> <span class="p">(</span>
+                    <span class="p">(</span><span class="n">zend</span> <span class="o">-</span> <span class="n">zstart</span><span class="p">)</span> <span class="o">*</span> <span class="n">escat_op</span> <span class="o">*</span> <span class="p">(</span><span class="n">Jkkp</span> <span class="o">-</span> <span class="n">I_nu</span><span class="p">[</span><span class="n">p_idx</span><span class="p">])</span>
+                <span class="p">)</span>
+                <span class="n">zstart</span> <span class="o">=</span> <span class="n">zend</span>
+
+                <span class="c1"># advance pointers</span>
+                <span class="n">direction</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">shell_id</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">shell_id</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="n">size_line</span><span class="p">)</span>
+                <span class="n">pexp_tau</span> <span class="o">+=</span> <span class="n">direction</span>
+                <span class="n">patt_S_ul</span> <span class="o">+=</span> <span class="n">direction</span>
+                <span class="n">pJred_lu</span> <span class="o">+=</span> <span class="n">direction</span>
+                <span class="n">pJblue_lu</span> <span class="o">+=</span> <span class="n">direction</span>
+            <span class="n">I_nu</span><span class="p">[</span><span class="n">p_idx</span><span class="p">]</span> <span class="o">*=</span> <span class="n">p</span>
+        <span class="n">L</span><span class="p">[</span><span class="n">nu_idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">M_PI</span> <span class="o">*</span> <span class="n">M_PI</span> <span class="o">*</span> <span class="n">trapezoid_integration</span><span class="p">(</span><span class="n">I_nu</span><span class="p">,</span> <span class="n">R_max</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">L</span></div>
+
+
+<span class="n">integrator_spec</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="n">NumbaModel</span><span class="o">.</span><span class="n">class_type</span><span class="o">.</span><span class="n">instance_type</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;plasma&quot;</span><span class="p">,</span> <span class="n">NumbaPlasma</span><span class="o">.</span><span class="n">class_type</span><span class="o">.</span><span class="n">instance_type</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;points&quot;</span><span class="p">,</span> <span class="n">int64</span><span class="p">),</span>
+<span class="p">]</span>
+
+
+<span class="nd">@jitclass</span><span class="p">(</span><span class="n">integrator_spec</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">NumbaFormalIntegrator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Helper class for performing the formal integral</span>
+<span class="sd">    with numba.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">plasma</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plasma</span> <span class="o">=</span> <span class="n">plasma</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">points</span>
+
+    <span class="k">def</span> <span class="nf">formal_integral</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">iT</span><span class="p">,</span>
+        <span class="n">inu</span><span class="p">,</span>
+        <span class="n">inu_size</span><span class="p">,</span>
+        <span class="n">att_S_ul</span><span class="p">,</span>
+        <span class="n">Jred_lu</span><span class="p">,</span>
+        <span class="n">Jblue_lu</span><span class="p">,</span>
+        <span class="n">tau_sobolev</span><span class="p">,</span>
+        <span class="n">electron_density</span><span class="p">,</span>
+        <span class="n">N</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;simple wrapper for the numba implementation of the formal integral&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">numba_formal_integral</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plasma</span><span class="p">,</span>
+            <span class="n">iT</span><span class="p">,</span>
+            <span class="n">inu</span><span class="p">,</span>
+            <span class="n">inu_size</span><span class="p">,</span>
+            <span class="n">att_S_ul</span><span class="p">,</span>
+            <span class="n">Jred_lu</span><span class="p">,</span>
+            <span class="n">Jblue_lu</span><span class="p">,</span>
+            <span class="n">tau_sobolev</span><span class="p">,</span>
+            <span class="n">electron_density</span><span class="p">,</span>
+            <span class="n">N</span><span class="p">,</span>
+        <span class="p">)</span>
+
+
+<div class="viewcode-block" id="FormalIntegrator"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.formal_integral.html#tardis.montecarlo.montecarlo_numba.formal_integral.FormalIntegrator">[docs]</a><span class="k">class</span> <span class="nc">FormalIntegrator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class containing the formal integrator</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">plasma</span><span class="p">,</span> <span class="n">runner</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">points</span>
+        <span class="k">if</span> <span class="n">plasma</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plasma</span> <span class="o">=</span> <span class="n">numba_plasma_initialize</span><span class="p">(</span>
+                <span class="n">plasma</span><span class="p">,</span> <span class="n">runner</span><span class="o">.</span><span class="n">line_interaction_type</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">atomic_data</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">original_plasma</span> <span class="o">=</span> <span class="n">plasma</span>
+
+<div class="viewcode-block" id="FormalIntegrator.generate_numba_objects"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.formal_integral.html#tardis.montecarlo.montecarlo_numba.formal_integral.FormalIntegrator.generate_numba_objects">[docs]</a>    <span class="k">def</span> <span class="nf">generate_numba_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;instantiate the numba interface objects</span>
+<span class="sd">        needed for computing the formal integral&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numba_model</span> <span class="o">=</span> <span class="n">NumbaModel</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">r_inner_i</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">r_outer_i</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">time_explosion</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;s&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numba_plasma</span> <span class="o">=</span> <span class="n">numba_plasma_initialize</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">original_plasma</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">line_interaction_type</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">numba_integrator</span> <span class="o">=</span> <span class="n">NumbaFormalIntegrator</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">numba_model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">numba_plasma</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="FormalIntegrator.check"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.formal_integral.html#tardis.montecarlo.montecarlo_numba.formal_integral.FormalIntegrator.check">[docs]</a>    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raises</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A method that determines if the formal integral can be performed with</span>
+<span class="sd">        the current configuration settings</span>
+
+<span class="sd">        The function returns False if the configuration conflicts with the</span>
+<span class="sd">        required settings. If raises evaluates to True, then a</span>
+<span class="sd">        IntegrationError is raised instead</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">raise_or_return</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">raises</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">IntegrationError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">plasma</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">runner</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">raise_or_return</span><span class="p">(</span>
+                    <span class="s2">&quot;The integrator is missing either model, plasma or &quot;</span>
+                    <span class="s2">&quot;runner. Please make sure these are provided to the &quot;</span>
+                    <span class="s2">&quot;FormalIntegrator.&quot;</span>
+                <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">line_interaction_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;downbranch&quot;</span><span class="p">,</span> <span class="s2">&quot;macroatom&quot;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">raise_or_return</span><span class="p">(</span>
+                <span class="s2">&quot;The FormalIntegrator currently only works for &quot;</span>
+                <span class="s1">&#39;line_interaction_type == &quot;downbranch&quot;&#39;</span>
+                <span class="s1">&#39;and line_interaction_type == &quot;macroatom&quot;&#39;</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="FormalIntegrator.calculate_spectrum"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.formal_integral.html#tardis.montecarlo.montecarlo_numba.formal_integral.FormalIntegrator.calculate_spectrum">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_spectrum</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">interpolate_shells</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">raises</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">):</span>
+        <span class="c1"># Very crude implementation</span>
+        <span class="c1"># The c extension needs bin centers (or something similar)</span>
+        <span class="c1"># while TARDISSpectrum needs bin edges</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="n">raises</span><span class="p">)</span>
+        <span class="n">N</span> <span class="o">=</span> <span class="n">points</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span>
+        <span class="k">if</span> <span class="n">interpolate_shells</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Default Value</span>
+            <span class="n">interpolate_shells</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">no_of_shells</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;The number of interpolate_shells was not &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;specified. The value was set to </span><span class="si">{</span><span class="n">interpolate_shells</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interpolate_shells</span> <span class="o">=</span> <span class="n">interpolate_shells</span>
+        <span class="n">frequency</span> <span class="o">=</span> <span class="n">frequency</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;Hz&quot;</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">spectral</span><span class="p">())</span>
+
+        <span class="n">luminosity</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">formal_integral</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">N</span><span class="p">),</span> <span class="s2">&quot;erg&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span>
+            <span class="n">frequency</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">frequency</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Ugly hack to convert to &#39;bin edges&#39;</span>
+        <span class="n">frequency</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="n">frequency</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                    <span class="p">[</span><span class="n">frequency</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">frequency</span><span class="o">.</span><span class="n">value</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span>
+                <span class="p">]</span>
+            <span class="p">),</span>
+            <span class="n">frequency</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">TARDISSpectrum</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">luminosity</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FormalIntegrator.make_source_function"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.formal_integral.html#tardis.montecarlo.montecarlo_numba.formal_integral.FormalIntegrator.make_source_function">[docs]</a>    <span class="k">def</span> <span class="nf">make_source_function</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the source function using the line absorption rate estimator `Edotlu_estimator`</span>
+
+<span class="sd">        Formally it calculates the expression ( 1 - exp(-tau_ul) ) S_ul but this product is what we need later,</span>
+<span class="sd">        so there is no need to factor out the source function explicitly.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : tardis.model.Radial1DModel</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Numpy array containing ( 1 - exp(-tau_ul) ) S_ul ordered by wavelength of the transition u -&gt; l</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span>
+        <span class="n">runner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">runner</span>
+
+        <span class="n">macro_ref</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atomic_data</span><span class="o">.</span><span class="n">macro_atom_references</span>
+        <span class="n">macro_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atomic_data</span><span class="o">.</span><span class="n">macro_atom_data</span>
+
+        <span class="n">no_lvls</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atomic_data</span><span class="o">.</span><span class="n">levels</span><span class="p">)</span>
+        <span class="n">no_shells</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">line_interaction_type</span> <span class="o">==</span> <span class="s2">&quot;macroatom&quot;</span><span class="p">:</span>
+            <span class="n">internal_jump_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">macro_data</span><span class="o">.</span><span class="n">transition_type</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">ma_int_data</span> <span class="o">=</span> <span class="n">macro_data</span><span class="p">[</span><span class="n">internal_jump_mask</span><span class="p">]</span>
+            <span class="n">internal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">original_plasma</span><span class="o">.</span><span class="n">transition_probabilities</span><span class="p">[</span>
+                <span class="n">internal_jump_mask</span>
+            <span class="p">]</span>
+
+            <span class="n">source_level_idx</span> <span class="o">=</span> <span class="n">ma_int_data</span><span class="o">.</span><span class="n">source_level_idx</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">destination_level_idx</span> <span class="o">=</span> <span class="n">ma_int_data</span><span class="o">.</span><span class="n">destination_level_idx</span><span class="o">.</span><span class="n">values</span>
+
+        <span class="n">Edotlu_norm_factor</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">runner</span><span class="o">.</span><span class="n">time_of_simulation</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">volume</span><span class="p">)</span>
+        <span class="n">exptau</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">original_plasma</span><span class="o">.</span><span class="n">tau_sobolevs</span><span class="p">)</span>
+        <span class="n">Edotlu</span> <span class="o">=</span> <span class="n">Edotlu_norm_factor</span> <span class="o">*</span> <span class="n">exptau</span> <span class="o">*</span> <span class="n">runner</span><span class="o">.</span><span class="n">Edotlu_estimator</span>
+
+        <span class="c1"># The following may be achieved by calling the appropriate plasma</span>
+        <span class="c1"># functions</span>
+        <span class="n">Jbluelu_norm_factor</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">const</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">cgs</span>
+                <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">time_explosion</span>
+                <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">runner</span><span class="o">.</span><span class="n">time_of_simulation</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">volume</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;1/(cm^2 s)&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">value</span>
+        <span class="p">)</span>
+        <span class="c1"># Jbluelu should already by in the correct order, i.e. by wavelength of</span>
+        <span class="c1"># the transition l-&gt;u</span>
+        <span class="n">Jbluelu</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">j_blue_estimator</span> <span class="o">*</span> <span class="n">Jbluelu_norm_factor</span>
+
+        <span class="n">upper_level_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atomic_data</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">droplevel</span><span class="p">(</span>
+            <span class="s2">&quot;level_number_lower&quot;</span>
+        <span class="p">)</span>
+        <span class="n">e_dot_lu</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">Edotlu</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">upper_level_index</span><span class="p">)</span>
+        <span class="n">e_dot_u</span> <span class="o">=</span> <span class="n">e_dot_lu</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">e_dot_u_src_idx</span> <span class="o">=</span> <span class="n">macro_ref</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">e_dot_u</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">references_idx</span><span class="o">.</span><span class="n">values</span>
+
+        <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">line_interaction_type</span> <span class="o">==</span> <span class="s2">&quot;macroatom&quot;</span><span class="p">:</span>
+            <span class="n">C_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+                <span class="n">columns</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">no_shells</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">macro_ref</span><span class="o">.</span><span class="n">index</span>
+            <span class="p">)</span>
+            <span class="n">q_indices</span> <span class="o">=</span> <span class="p">(</span><span class="n">source_level_idx</span><span class="p">,</span> <span class="n">destination_level_idx</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">shell</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">no_shells</span><span class="p">):</span>
+                <span class="n">Q</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">coo_matrix</span><span class="p">(</span>
+                    <span class="p">(</span><span class="n">internal</span><span class="p">[</span><span class="n">shell</span><span class="p">],</span> <span class="n">q_indices</span><span class="p">),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">no_lvls</span><span class="p">,</span> <span class="n">no_lvls</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">inv_N</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">no_lvls</span><span class="p">)</span> <span class="o">-</span> <span class="n">Q</span>
+                <span class="n">e_dot_u_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">no_lvls</span><span class="p">)</span>
+                <span class="n">e_dot_u_vec</span><span class="p">[</span><span class="n">e_dot_u_src_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">e_dot_u</span><span class="p">[</span><span class="n">shell</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+                <span class="n">C_frame</span><span class="p">[</span><span class="n">shell</span><span class="p">]</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">spsolve</span><span class="p">(</span><span class="n">inv_N</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">e_dot_u_vec</span><span class="p">)</span>
+
+        <span class="n">e_dot_u</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;atomic_number&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ion_number&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source_level_number&quot;</span><span class="p">,</span>
+        <span class="p">]</span>  <span class="c1"># To make the q_ul e_dot_u product work, could be cleaner</span>
+        <span class="n">transitions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">original_plasma</span><span class="o">.</span><span class="n">atomic_data</span><span class="o">.</span><span class="n">macro_atom_data</span><span class="p">[</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">original_plasma</span><span class="o">.</span><span class="n">atomic_data</span><span class="o">.</span><span class="n">macro_atom_data</span><span class="o">.</span><span class="n">transition_type</span>
+            <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">transitions_index</span> <span class="o">=</span> <span class="n">transitions</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span>
+            <span class="p">[</span><span class="s2">&quot;atomic_number&quot;</span><span class="p">,</span> <span class="s2">&quot;ion_number&quot;</span><span class="p">,</span> <span class="s2">&quot;source_level_number&quot;</span><span class="p">]</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">original_plasma</span><span class="o">.</span><span class="n">transition_probabilities</span><span class="p">[</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atomic_data</span><span class="o">.</span><span class="n">macro_atom_data</span><span class="o">.</span><span class="n">transition_type</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+        <span class="p">]</span>
+        <span class="n">q_ul</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">transitions_index</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">time_explosion</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atomic_data</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;line_id&quot;</span><span class="p">)</span>
+        <span class="n">wave</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">wavelength_cm</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+            <span class="n">transitions</span><span class="o">.</span><span class="n">transition_line_id</span>
+        <span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">line_interaction_type</span> <span class="o">==</span> <span class="s2">&quot;macroatom&quot;</span><span class="p">:</span>
+            <span class="n">e_dot_u</span> <span class="o">=</span> <span class="n">C_frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">e_dot_u</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+        <span class="n">att_S_ul</span> <span class="o">=</span> <span class="n">wave</span> <span class="o">*</span> <span class="p">(</span><span class="n">q_ul</span> <span class="o">*</span> <span class="n">e_dot_u</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="n">att_S_ul</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">transitions</span><span class="o">.</span><span class="n">transition_line_id</span><span class="o">.</span><span class="n">values</span>
+        <span class="p">)</span>
+        <span class="n">att_S_ul</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">lines</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+        <span class="c1"># Jredlu should already by in the correct order, i.e. by wavelength of</span>
+        <span class="c1"># the transition l-&gt;u (similar to Jbluelu)</span>
+        <span class="n">Jredlu</span> <span class="o">=</span> <span class="n">Jbluelu</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">original_plasma</span><span class="o">.</span><span class="n">tau_sobolevs</span><span class="p">)</span> <span class="o">+</span> <span class="n">att_S_ul</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">interpolate_shells</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="p">(</span>
+                <span class="n">att_S_ul</span><span class="p">,</span>
+                <span class="n">Jredlu</span><span class="p">,</span>
+                <span class="n">Jbluelu</span><span class="p">,</span>
+                <span class="n">e_dot_u</span><span class="p">,</span>
+            <span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">interpolate_integrator_quantities</span><span class="p">(</span>
+                <span class="n">att_S_ul</span><span class="p">,</span> <span class="n">Jredlu</span><span class="p">,</span> <span class="n">Jbluelu</span><span class="p">,</span> <span class="n">e_dot_u</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">runner</span><span class="o">.</span><span class="n">r_inner_i</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">r_inner_cgs</span>
+            <span class="n">runner</span><span class="o">.</span><span class="n">r_outer_i</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">r_outer_cgs</span>
+            <span class="n">runner</span><span class="o">.</span><span class="n">tau_sobolevs_integ</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">original_plasma</span><span class="o">.</span><span class="n">tau_sobolevs</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">runner</span><span class="o">.</span><span class="n">electron_densities_integ</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">original_plasma</span><span class="o">.</span><span class="n">electron_densities</span><span class="o">.</span><span class="n">values</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">att_S_ul</span><span class="p">,</span> <span class="n">Jredlu</span><span class="p">,</span> <span class="n">Jbluelu</span><span class="p">,</span> <span class="n">e_dot_u</span></div>
+
+<div class="viewcode-block" id="FormalIntegrator.interpolate_integrator_quantities"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.formal_integral.html#tardis.montecarlo.montecarlo_numba.formal_integral.FormalIntegrator.interpolate_integrator_quantities">[docs]</a>    <span class="k">def</span> <span class="nf">interpolate_integrator_quantities</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">att_S_ul</span><span class="p">,</span> <span class="n">Jredlu</span><span class="p">,</span> <span class="n">Jbluelu</span><span class="p">,</span> <span class="n">e_dot_u</span>
+    <span class="p">):</span>
+        <span class="n">runner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">runner</span>
+        <span class="n">plasma</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">original_plasma</span>
+        <span class="n">nshells</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">interpolate_shells</span>
+        <span class="n">r_middle</span> <span class="o">=</span> <span class="p">(</span><span class="n">runner</span><span class="o">.</span><span class="n">r_inner_cgs</span> <span class="o">+</span> <span class="n">runner</span><span class="o">.</span><span class="n">r_outer_cgs</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+
+        <span class="n">r_integ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span>
+            <span class="n">runner</span><span class="o">.</span><span class="n">r_inner_cgs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">runner</span><span class="o">.</span><span class="n">r_outer_cgs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">nshells</span>
+        <span class="p">)</span>
+        <span class="n">runner</span><span class="o">.</span><span class="n">r_inner_i</span> <span class="o">=</span> <span class="n">r_integ</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">runner</span><span class="o">.</span><span class="n">r_outer_i</span> <span class="o">=</span> <span class="n">r_integ</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+        <span class="n">r_middle_integ</span> <span class="o">=</span> <span class="p">(</span><span class="n">r_integ</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">r_integ</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">/</span> <span class="mf">2.0</span>
+
+        <span class="n">runner</span><span class="o">.</span><span class="n">electron_densities_integ</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span>
+            <span class="n">r_middle</span><span class="p">,</span>
+            <span class="n">plasma</span><span class="o">.</span><span class="n">electron_densities</span><span class="p">,</span>
+            <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;extrapolate&quot;</span><span class="p">,</span>
+            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span>
+        <span class="p">)(</span><span class="n">r_middle_integ</span><span class="p">)</span>
+        <span class="c1"># Assume tau_sobolevs to be constant within a shell</span>
+        <span class="c1"># (as in the MC simulation)</span>
+        <span class="n">runner</span><span class="o">.</span><span class="n">tau_sobolevs_integ</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span>
+            <span class="n">r_middle</span><span class="p">,</span>
+            <span class="n">plasma</span><span class="o">.</span><span class="n">tau_sobolevs</span><span class="p">,</span>
+            <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;extrapolate&quot;</span><span class="p">,</span>
+            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span>
+        <span class="p">)(</span><span class="n">r_middle_integ</span><span class="p">)</span>
+        <span class="n">att_S_ul</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">r_middle</span><span class="p">,</span> <span class="n">att_S_ul</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;extrapolate&quot;</span><span class="p">)(</span>
+            <span class="n">r_middle_integ</span>
+        <span class="p">)</span>
+        <span class="n">Jredlu</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="n">interp1d</span><span class="p">(</span><span class="n">r_middle</span><span class="p">,</span> <span class="n">Jredlu</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;extrapolate&quot;</span><span class="p">)(</span><span class="n">r_middle_integ</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">Jbluelu</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">r_middle</span><span class="p">,</span> <span class="n">Jbluelu</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;extrapolate&quot;</span><span class="p">)(</span>
+            <span class="n">r_middle_integ</span>
+        <span class="p">)</span>
+        <span class="n">e_dot_u</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">r_middle</span><span class="p">,</span> <span class="n">e_dot_u</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;extrapolate&quot;</span><span class="p">)(</span>
+            <span class="n">r_middle_integ</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Set negative values from the extrapolation to zero</span>
+        <span class="n">att_S_ul</span> <span class="o">=</span> <span class="n">att_S_ul</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">Jbluelu</span> <span class="o">=</span> <span class="n">Jbluelu</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">Jredlu</span> <span class="o">=</span> <span class="n">Jredlu</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">e_dot_u</span> <span class="o">=</span> <span class="n">e_dot_u</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">att_S_ul</span><span class="p">,</span> <span class="n">Jredlu</span><span class="p">,</span> <span class="n">Jbluelu</span><span class="p">,</span> <span class="n">e_dot_u</span></div>
+
+<div class="viewcode-block" id="FormalIntegrator.formal_integral"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.formal_integral.html#tardis.montecarlo.montecarlo_numba.formal_integral.FormalIntegrator.formal_integral">[docs]</a>    <span class="k">def</span> <span class="nf">formal_integral</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Do the formal integral with the numba</span>
+<span class="sd">        routines&quot;&quot;&quot;</span>
+        <span class="c1"># TODO: get rid of storage later on</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_source_function</span><span class="p">()</span>
+
+        <span class="n">att_S_ul</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">)</span>
+        <span class="n">Jred_lu</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">)</span>
+        <span class="n">Jblue_lu</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">generate_numba_objects</span><span class="p">()</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numba_integrator</span><span class="o">.</span><span class="n">formal_integral</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">t_inner</span><span class="p">,</span>
+            <span class="n">nu</span><span class="p">,</span>
+            <span class="n">nu</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">att_S_ul</span><span class="p">,</span>
+            <span class="n">Jred_lu</span><span class="p">,</span>
+            <span class="n">Jblue_lu</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">tau_sobolevs_integ</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">electron_densities_integ</span><span class="p">,</span>
+            <span class="n">N</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="populate_z"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.formal_integral.html#tardis.montecarlo.montecarlo_numba.formal_integral.populate_z">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict_no_parallel</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">populate_z</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">oz</span><span class="p">,</span> <span class="n">oshell_id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate p line intersections</span>
+
+<span class="sd">    This function calculates the intersection points of the p-line with</span>
+<span class="sd">    each shell</span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">        :p: (double) distance of the integration line to the center</span>
+<span class="sd">        :oz: (array of doubles) will be set with z values. the array is truncated</span>
+<span class="sd">                    by the value `1`.</span>
+<span class="sd">        :oshell_id: (int64) will be set with the corresponding shell_ids</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># abbreviations</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">r_outer</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">r_inner</span><span class="p">)</span>  <span class="c1"># check</span>
+    <span class="c1"># print(N)</span>
+    <span class="n">inv_t</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">model</span><span class="o">.</span><span class="n">time_explosion</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="n">N</span>
+
+    <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">r_inner</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="c1"># intersect the photosphere</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+            <span class="n">oz</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">calculate_z</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">p</span><span class="p">,</span> <span class="n">inv_t</span><span class="p">)</span>
+            <span class="n">oshell_id</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">return</span> <span class="n">N</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># no intersection with photosphere</span>
+        <span class="c1"># that means we intersect each shell twice</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">calculate_z</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">p</span><span class="p">,</span> <span class="n">inv_t</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">offset</span> <span class="o">==</span> <span class="n">N</span><span class="p">:</span>
+                <span class="n">offset</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="c1"># calculate the index in the resulting array</span>
+            <span class="n">i_low</span> <span class="o">=</span> <span class="n">N</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># the far intersection with the shell</span>
+            <span class="n">i_up</span> <span class="o">=</span> <span class="n">N</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">offset</span>  <span class="c1"># the nearer intersection with the shell</span>
+
+            <span class="c1"># setting the arrays; check return them?</span>
+            <span class="n">oz</span><span class="p">[</span><span class="n">i_low</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">z</span>
+            <span class="n">oshell_id</span><span class="p">[</span><span class="n">i_low</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="n">oz</span><span class="p">[</span><span class="n">i_up</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">z</span>
+            <span class="n">oshell_id</span><span class="p">[</span><span class="n">i_up</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="n">offset</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="calculate_z"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.formal_integral.html#tardis.montecarlo.montecarlo_numba.formal_integral.calculate_z">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict_no_parallel</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">calculate_z</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">inv_t</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate distance to p line</span>
+
+<span class="sd">    Calculate half of the length of the p-line inside a shell</span>
+<span class="sd">    of radius r in terms of unit length (c * t_exp).</span>
+<span class="sd">    If shell and p-line do not intersect, return 0.</span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">        :r: (double) radius of the shell</span>
+<span class="sd">        :p: (double) distance of the p-line to the center of the supernova</span>
+<span class="sd">        :inv_t: (double) inverse time_explosio is needed to norm to unit-length</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="n">p</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">r</span> <span class="o">-</span> <span class="n">p</span> <span class="o">*</span> <span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="n">C_INV</span> <span class="o">*</span> <span class="n">inv_t</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span></div>
+
+
+<div class="viewcode-block" id="BoundsError"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.formal_integral.html#tardis.montecarlo.montecarlo_numba.formal_integral.BoundsError">[docs]</a><span class="k">class</span> <span class="nc">BoundsError</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="line_search"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.formal_integral.html#tardis.montecarlo.montecarlo_numba.formal_integral.line_search">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict_no_parallel</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">line_search</span><span class="p">(</span><span class="n">nu</span><span class="p">,</span> <span class="n">nu_insert</span><span class="p">,</span> <span class="n">number_of_lines</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Insert a value in to an array of line frequencies</span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">        :nu: (array) line frequencies</span>
+<span class="sd">        :nu_insert: (int) value of nu key</span>
+<span class="sd">        :number_of_lines: (int) number of lines in the line list</span>
+
+<span class="sd">    Outputs:</span>
+<span class="sd">        index of the next line ot the red.</span>
+<span class="sd">                If the key value is redder</span>
+<span class="sd">                 than the reddest line returns number_of_lines.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># TODO: fix the TARDIS_ERROR_OK</span>
+    <span class="c1"># tardis_error_t ret_val = TARDIS_ERROR_OK # check</span>
+    <span class="n">imin</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">imax</span> <span class="o">=</span> <span class="n">number_of_lines</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">nu_insert</span> <span class="o">&gt;</span> <span class="n">nu</span><span class="p">[</span><span class="n">imin</span><span class="p">]:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">imin</span>
+    <span class="k">elif</span> <span class="n">nu_insert</span> <span class="o">&lt;</span> <span class="n">nu</span><span class="p">[</span><span class="n">imax</span><span class="p">]:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">imax</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">reverse_binary_search</span><span class="p">(</span><span class="n">nu</span><span class="p">,</span> <span class="n">nu_insert</span><span class="p">,</span> <span class="n">imin</span><span class="p">,</span> <span class="n">imax</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="reverse_binary_search"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.formal_integral.html#tardis.montecarlo.montecarlo_numba.formal_integral.reverse_binary_search">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict_no_parallel</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">reverse_binary_search</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_insert</span><span class="p">,</span> <span class="n">imin</span><span class="p">,</span> <span class="n">imax</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Look for a place to insert a value in an inversely sorted float array.</span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">        :x: (array) an inversely (largest to lowest) sorted float array</span>
+<span class="sd">        :x_insert: (value) a value to insert</span>
+<span class="sd">        :imin: (int) lower bound</span>
+<span class="sd">        :imax: (int) upper bound</span>
+
+<span class="sd">    Outputs:</span>
+<span class="sd">        index of the next boundary to the left</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># ret_val = TARDIS_ERROR_OK # check</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x_insert</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">[</span><span class="n">imin</span><span class="p">])</span> <span class="ow">or</span> <span class="p">(</span><span class="n">x_insert</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">[</span><span class="n">imax</span><span class="p">]):</span>
+        <span class="k">raise</span> <span class="n">BoundsError</span>  <span class="c1"># check</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">x</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x_insert</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="trapezoid_integration"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.formal_integral.html#tardis.montecarlo.montecarlo_numba.formal_integral.trapezoid_integration">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict_no_parallel</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">trapezoid_integration</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;in the future, let&#39;s just replace</span>
+<span class="sd">    this with the numpy trapz</span>
+<span class="sd">    since it is numba compatable</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="n">h</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="intensity_black_body"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.formal_integral.html#tardis.montecarlo.montecarlo_numba.formal_integral.intensity_black_body">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict_no_parallel</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">intensity_black_body</span><span class="p">(</span><span class="n">nu</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the black body intensity at frequency nu</span>
+<span class="sd">    and temperature T&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">nu</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>  <span class="c1"># to avoid ZeroDivisionError</span>
+    <span class="n">beta_rad</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">KB_CGS</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
+    <span class="n">coefficient</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">H_CGS</span> <span class="o">*</span> <span class="n">C_INV</span> <span class="o">*</span> <span class="n">C_INV</span>
+    <span class="k">return</span> <span class="n">coefficient</span> <span class="o">*</span> <span class="n">nu</span> <span class="o">*</span> <span class="n">nu</span> <span class="o">*</span> <span class="n">nu</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">H_CGS</span> <span class="o">*</span> <span class="n">nu</span> <span class="o">*</span> <span class="n">beta_rad</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="calculate_p_values"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.formal_integral.html#tardis.montecarlo.montecarlo_numba.formal_integral.calculate_p_values">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict_no_parallel</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">calculate_p_values</span><span class="p">(</span><span class="n">R_max</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This can probably be replaced with a simpler function&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">*</span> <span class="n">R_max</span> <span class="o">/</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2013-2021, TARDIS Collaboration.
+      <span class="lastupdated">
+        Last updated on 12 Jul 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

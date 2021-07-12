@@ -1,0 +1,993 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>tardis.visualization.widgets.line_info &mdash; tardis v2021.7.12.0.dev3+g7d3899ed</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/plot_directive.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/tardis_logo.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link href="../../../../_static/tardis.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> tardis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2021.7.12.0.dev3+g7d3899ed
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickstart/quickstart.html">Quickstart for TARDIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Input/Output</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/configuration/index.html">Configuration (Required Input)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/optional/index.html">Optional Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/visualization/index.html">Visualization Tools &amp; Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/output/index.html">Additional Outputs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Physics Walkthrough</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/setup/index.html">Setting Up the Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/montecarlo/index.html">Monte Carlo Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/est_and_conv/index.html">Estimators and Convergence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/spectrum/index.html">Spectrum Generation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Research with TARDIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../research/index.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team &amp; Credits</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../team_and_governance/index.html">Team and Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../credits.html">Credits &amp; Publication Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CODE_OF_CONDUCT.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../sponsors.html">Sponsors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to TARDIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CONTRIBUTING.html">Contribution Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../development/index.html">Developer Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CHANGELOG.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../roadmap.html">Development Roadmap</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/modules.html">tardis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zreferences.html">TARDIS Papers and useful References</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Outdated</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../outdated/index.html">Outdated Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tardis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tardis.visualization.widgets.line_info</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tardis.visualization.widgets.line_info</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Class to create and display Line Info Widget.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">qgrid</span>
+<span class="kn">from</span> <span class="nn">plotly</span> <span class="kn">import</span> <span class="n">graph_objects</span> <span class="k">as</span> <span class="n">go</span>
+<span class="kn">from</span> <span class="nn">plotly.callbacks</span> <span class="kn">import</span> <span class="n">BoxSelector</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">ipw</span>
+
+<span class="kn">from</span> <span class="nn">tardis.analysis</span> <span class="kn">import</span> <span class="n">LastLineInteraction</span>
+<span class="kn">from</span> <span class="nn">tardis.util.base</span> <span class="kn">import</span> <span class="n">species_tuple_to_string</span><span class="p">,</span> <span class="n">species_string_to_tuple</span>
+<span class="kn">from</span> <span class="nn">tardis.visualization.widgets.util</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">create_table_widget</span><span class="p">,</span>
+    <span class="n">TableSummaryLabel</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">tardis.visualization</span> <span class="kn">import</span> <span class="n">plot_util</span> <span class="k">as</span> <span class="n">pu</span>
+
+
+<div class="viewcode-block" id="LineInfoWidget"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.line_info.html#tardis.visualization.widgets.line_info.LineInfoWidget">[docs]</a><span class="k">class</span> <span class="nc">LineInfoWidget</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Widget to explore atomic lines that produced features in the simulated spectrum.</span>
+
+<span class="sd">    It allows selection of a wavelength range in the spectrum to display a</span>
+<span class="sd">    table giving the fraction of packets that experienced their last</span>
+<span class="sd">    interaction with each species. Using toggle buttons, users can specify</span>
+<span class="sd">    whether to filter the selected range by emitted or absorbed wavelengths</span>
+<span class="sd">    of packets. Clicking on a row in the fractional species interactions table</span>
+<span class="sd">    shows packet counts for each last line interaction of the selected species,</span>
+<span class="sd">    which can be grouped in several ways using the dropdown menu.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">FILTER_MODES</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;packet_out_nu&quot;</span><span class="p">,</span> <span class="s2">&quot;packet_in_nu&quot;</span><span class="p">)</span>
+    <span class="n">FILTER_MODES_DESC</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Emitted Wavelength&quot;</span><span class="p">,</span> <span class="s2">&quot;Absorbed Wavelength&quot;</span><span class="p">)</span>
+    <span class="n">GROUP_MODES</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="s2">&quot;exc&quot;</span><span class="p">,</span> <span class="s2">&quot;de-exc&quot;</span><span class="p">)</span>
+    <span class="n">GROUP_MODES_DESC</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">&quot;Both excitation line (absorption) and de-excitation line (emission)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Only excitation line (absorption)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Only de-excitation line (emission)&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">COLORS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;selection_area&quot;</span><span class="p">:</span> <span class="s2">&quot;lightpink&quot;</span><span class="p">,</span> <span class="s2">&quot;selection_border&quot;</span><span class="p">:</span> <span class="s2">&quot;salmon&quot;</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">lines_data</span><span class="p">,</span>
+        <span class="n">line_interaction_analysis</span><span class="p">,</span>
+        <span class="n">spectrum_wavelength</span><span class="p">,</span>
+        <span class="n">spectrum_luminosity_density_lambda</span><span class="p">,</span>
+        <span class="n">virt_spectrum_wavelength</span><span class="p">,</span>
+        <span class="n">virt_spectrum_luminosity_density_lambda</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the LineInfoWidget with line interaction and spectrum data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        lines_data : pd.DataFrame</span>
+<span class="sd">            Data about the atomic lines present in simulation model&#39;s plasma</span>
+<span class="sd">        line_interaction_analysis : dict of tardis.analysis.LastLineInteraction</span>
+<span class="sd">            Dictionary in which keys are the FILTER_MODES and values are the</span>
+<span class="sd">            LastLineInteraction objects initialized with corresponding modes</span>
+<span class="sd">        spectrum_wavelength : astropy.Quantity</span>
+<span class="sd">            Wavelength values of a real spectrum, having unit of Angstrom</span>
+<span class="sd">        spectrum_luminosity_density_lambda : astropy.Quantity</span>
+<span class="sd">            Luminosity density lambda values of a real spectrum, having unit</span>
+<span class="sd">            of (erg/s)/Angstrom</span>
+<span class="sd">        virt_spectrum_wavelength : astropy.Quantity</span>
+<span class="sd">            Wavelength values of a virtual spectrum, having unit of Angstrom</span>
+<span class="sd">        virt_spectrum_luminosity_density_lambda : astropy.Quantity</span>
+<span class="sd">            Luminosity density lambda values of a virtual spectrum, having unit</span>
+<span class="sd">            of (erg/s)/Angstrom</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lines_data</span> <span class="o">=</span> <span class="n">lines_data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">line_interaction_analysis</span> <span class="o">=</span> <span class="n">line_interaction_analysis</span>
+
+        <span class="c1"># Widgets ------------------------------------------------</span>
+        <span class="n">max_rows_option</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;maxVisibleRows&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">species_interactions_table</span> <span class="o">=</span> <span class="n">create_table_widget</span><span class="p">(</span>
+            <span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_species_interactions</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span>
+            <span class="n">col_widths</span><span class="o">=</span><span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">65</span><span class="p">],</span>
+            <span class="n">table_options</span><span class="o">=</span><span class="n">max_rows_option</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">line_counts_col_widths</span> <span class="o">=</span> <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_line_counts_table</span> <span class="o">=</span> <span class="n">create_table_widget</span><span class="p">(</span>
+            <span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_last_line_counts</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span>
+            <span class="n">col_widths</span><span class="o">=</span><span class="n">line_counts_col_widths</span><span class="p">,</span>
+            <span class="n">table_options</span><span class="o">=</span><span class="n">max_rows_option</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_packets_label</span> <span class="o">=</span> <span class="n">TableSummaryLabel</span><span class="p">(</span>
+            <span class="n">target_table</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">last_line_counts_table</span><span class="p">,</span>
+            <span class="n">table_col_widths</span><span class="o">=</span><span class="n">line_counts_col_widths</span><span class="p">,</span>
+            <span class="n">label_key</span><span class="o">=</span><span class="s2">&quot;Total Packets&quot;</span><span class="p">,</span>
+            <span class="n">label_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">figure_widget</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_spectrum</span><span class="p">(</span>
+            <span class="n">spectrum_wavelength</span><span class="p">,</span>
+            <span class="n">spectrum_luminosity_density_lambda</span><span class="p">,</span>
+            <span class="n">virt_spectrum_wavelength</span><span class="p">,</span>
+            <span class="n">virt_spectrum_luminosity_density_lambda</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">filter_mode_buttons</span> <span class="o">=</span> <span class="n">ipw</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span>
+            <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">FILTER_MODES_DESC</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">0</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">group_mode_dropdown</span> <span class="o">=</span> <span class="n">ipw</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+            <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">GROUP_MODES_DESC</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">0</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="LineInfoWidget.from_simulation"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.line_info.html#tardis.visualization.widgets.line_info.LineInfoWidget.from_simulation">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_simulation</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">sim</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create an instance of LineInfoWidget from a TARDIS simulation object.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        sim : tardis.simulation.Simulation</span>
+<span class="sd">            TARDIS Simulation object produced by running a simulation</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        LineInfoWidget object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">lines_data</span><span class="o">=</span><span class="n">sim</span><span class="o">.</span><span class="n">plasma</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;line_id&quot;</span><span class="p">),</span>
+            <span class="n">line_interaction_analysis</span><span class="o">=</span><span class="p">{</span>
+                <span class="n">filter_mode</span><span class="p">:</span> <span class="n">LastLineInteraction</span><span class="o">.</span><span class="n">from_model</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">filter_mode</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">filter_mode</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">FILTER_MODES</span>
+            <span class="p">},</span>
+            <span class="n">spectrum_wavelength</span><span class="o">=</span><span class="n">sim</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">spectrum</span><span class="o">.</span><span class="n">wavelength</span><span class="p">,</span>
+            <span class="n">spectrum_luminosity_density_lambda</span><span class="o">=</span><span class="n">sim</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">spectrum</span><span class="o">.</span><span class="n">luminosity_density_lambda</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+                <span class="s2">&quot;erg/(s AA)&quot;</span>
+            <span class="p">),</span>
+            <span class="n">virt_spectrum_wavelength</span><span class="o">=</span><span class="n">sim</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">spectrum_virtual</span><span class="o">.</span><span class="n">wavelength</span><span class="p">,</span>
+            <span class="n">virt_spectrum_luminosity_density_lambda</span><span class="o">=</span><span class="n">sim</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">spectrum_virtual</span><span class="o">.</span><span class="n">luminosity_density_lambda</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+                <span class="s2">&quot;erg/(s AA)&quot;</span>
+            <span class="p">),</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="LineInfoWidget.get_species_interactions"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.line_info.html#tardis.visualization.widgets.line_info.LineInfoWidget.get_species_interactions">[docs]</a>    <span class="k">def</span> <span class="nf">get_species_interactions</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">wavelength_range</span><span class="p">,</span> <span class="n">filter_mode</span><span class="o">=</span><span class="n">FILTER_MODES</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get fractional species interactions in specified wavelength range.</span>
+
+<span class="sd">        Fractional species interactions means fraction of packets present in</span>
+<span class="sd">        the specified wavelength range which experienced their last interaction</span>
+<span class="sd">        with a species. The packets to consider are filtered by the specified</span>
+<span class="sd">        filter mode.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        wavelength_range : list-like or None</span>
+<span class="sd">            A list of two float values to specify the wavelength range - first</span>
+<span class="sd">            for the range start and second for the range end. None specifies</span>
+<span class="sd">            that no wavelength range is selected and will return empty dataframe</span>
+<span class="sd">        filter_mode : str, optional</span>
+<span class="sd">            Filter mode of the LastLineInteraction object to use for filtering</span>
+<span class="sd">            the selected wavelength range (more details in Notes section).</span>
+<span class="sd">            Allowed values are given by the class variable :code:`FILTER_MODES`</span>
+<span class="sd">            (default value is :code:`FILTER_MODES[0]`)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pandas.DataFrame</span>
+<span class="sd">            Dataframe containing species symbols and corresponding fractions</span>
+<span class="sd">            of packets interacting with them</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This method depends on tardis.analysis.LastLineInteraction object for</span>
+<span class="sd">        doing computations. So there is a member variable in this class -</span>
+<span class="sd">        :code:`line_interaction_analysis` which is a dictionary of such objects</span>
+<span class="sd">        (each of them differ in how they filter the selected wavelength range).</span>
+<span class="sd">        Thus we have to specify which object to use by specifying the</span>
+<span class="sd">        filter_mode parameter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">wavelength_range</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">line_interaction_analysis</span><span class="p">[</span><span class="n">filter_mode</span><span class="p">]</span><span class="o">.</span><span class="n">wavelength_start</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">wavelength_range</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">AA</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">line_interaction_analysis</span><span class="p">[</span><span class="n">filter_mode</span><span class="p">]</span><span class="o">.</span><span class="n">wavelength_end</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">wavelength_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">AA</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Obtain species group from last_line_in dataframe</span>
+            <span class="n">selected_species_group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_interaction_analysis</span><span class="p">[</span>
+                <span class="n">filter_mode</span>
+            <span class="p">]</span><span class="o">.</span><span class="n">last_line_in</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;atomic_number&quot;</span><span class="p">,</span> <span class="s2">&quot;ion_number&quot;</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="n">selected_species_group</span><span class="o">.</span><span class="n">groups</span><span class="p">:</span>
+                <span class="n">selected_species_symbols</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">species_tuple_to_string</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">selected_species_group</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+                <span class="p">]</span>
+
+                <span class="c1"># Normalize each group&#39;s count to find fractions of interactions</span>
+                <span class="n">fractional_species_interactions</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">selected_species_group</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+                    <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_interaction_analysis</span><span class="p">[</span>
+                        <span class="n">filter_mode</span>
+                    <span class="p">]</span><span class="o">.</span><span class="n">last_line_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="p">)</span>
+
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># No species could be selected in specified wavelength_range</span>
+                <span class="c1"># qgrid cannot show empty dataframe properly,</span>
+                <span class="c1"># so create one row with empty strings</span>
+                <span class="n">selected_species_symbols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
+                <span class="n">fractional_species_interactions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;&quot;</span><span class="p">])</span>
+
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># wavelength_range is None</span>
+            <span class="n">selected_species_symbols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
+            <span class="n">fractional_species_interactions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;&quot;</span><span class="p">])</span>
+
+        <span class="n">fractional_species_interactions</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span>
+            <span class="n">selected_species_symbols</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Species&quot;</span>
+        <span class="p">)</span>
+        <span class="n">fractional_species_interactions</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Fraction of packets interacting&quot;</span>
+        <span class="k">return</span> <span class="n">fractional_species_interactions</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+            <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="LineInfoWidget.get_last_line_counts"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.line_info.html#tardis.visualization.widgets.line_info.LineInfoWidget.get_last_line_counts">[docs]</a>    <span class="k">def</span> <span class="nf">get_last_line_counts</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">selected_species</span><span class="p">,</span>
+        <span class="n">filter_mode</span><span class="o">=</span><span class="n">FILTER_MODES</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="n">group_mode</span><span class="o">=</span><span class="n">GROUP_MODES</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get packet counts of each last line interaction of a species.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        selected_species : str</span>
+<span class="sd">            Valid symbol of a species (e.g Si II) selected from the species</span>
+<span class="sd">            data returned by :code:`get_species_interactions` (see Notes section)</span>
+<span class="sd">        filter_mode : str, optional</span>
+<span class="sd">            Filter mode of the LastLineInteraction object to use for fetching</span>
+<span class="sd">            the data of last lines interacted (more details in Notes section).</span>
+<span class="sd">            Allowed values are given by the class variable :code:`FILTER_MODES`</span>
+<span class="sd">            (default value is :code:`FILTER_MODES[0]`)</span>
+<span class="sd">        group_mode : str, optional</span>
+<span class="sd">            Group mode to use for grouping last line interactions by excitation</span>
+<span class="sd">            lines, de-excitation lines or both. Allowed values are given by the</span>
+<span class="sd">            class variable :code:`GROUP_MODES` (default value is</span>
+<span class="sd">            :code:`GROUP_MODES[0]` i.e. both)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pd.DataFrame</span>
+<span class="sd">            DataFrame containing last line interactions and corresponding</span>
+<span class="sd">            packet counts.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This method depends on tardis.analysis.LastLineInteraction object for</span>
+<span class="sd">        doing computations. So there is a member variable in this class -</span>
+<span class="sd">        :code:`line_interaction_analysis` which is a dictionary of such objects</span>
+<span class="sd">        (each of them differ in how they filter the selected wavelength range).</span>
+<span class="sd">        Thus we have to specify which object to use by specifying the</span>
+<span class="sd">        filter_mode parameter.</span>
+
+<span class="sd">        This method should always be called after calling</span>
+<span class="sd">        :code:`get_species_interactions` method which sets a wavelength</span>
+<span class="sd">        range on LastLineInteraction object. So selected_species should</span>
+<span class="sd">        be one present within that range, otherwise it will result an error.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">selected_species</span><span class="p">:</span>
+            <span class="n">selected_species_tuple</span> <span class="o">=</span> <span class="n">species_string_to_tuple</span><span class="p">(</span><span class="n">selected_species</span><span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># Get selected species&#39; rows from last_line_in dataframe</span>
+                <span class="n">current_last_lines_in</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">line_interaction_analysis</span><span class="p">[</span><span class="n">filter_mode</span><span class="p">]</span>
+                    <span class="o">.</span><span class="n">last_line_in</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span>
+                        <span class="n">key</span><span class="o">=</span><span class="n">selected_species_tuple</span><span class="p">,</span>
+                        <span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;atomic_number&quot;</span><span class="p">,</span> <span class="s2">&quot;ion_number&quot;</span><span class="p">],</span>
+                        <span class="n">drop_level</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="p">)</span>
+                    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+                <span class="p">)</span>
+
+                <span class="c1"># Get selected species&#39; rows from last_line_out dataframe</span>
+                <span class="n">current_last_lines_out</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">line_interaction_analysis</span><span class="p">[</span><span class="n">filter_mode</span><span class="p">]</span>
+                    <span class="o">.</span><span class="n">last_line_out</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span>
+                        <span class="n">key</span><span class="o">=</span><span class="n">selected_species_tuple</span><span class="p">,</span>
+                        <span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;atomic_number&quot;</span><span class="p">,</span> <span class="s2">&quot;ion_number&quot;</span><span class="p">],</span>
+                        <span class="n">drop_level</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="p">)</span>
+                    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+                <span class="p">)</span>
+
+                <span class="k">assert</span> <span class="p">(</span>
+                    <span class="n">current_last_lines_in</span><span class="o">.</span><span class="n">empty</span> <span class="o">&amp;</span> <span class="n">current_last_lines_out</span><span class="o">.</span><span class="n">empty</span>
+                    <span class="o">==</span> <span class="kc">False</span>
+                <span class="p">)</span>
+
+            <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">AssertionError</span><span class="p">):</span>  <span class="c1"># selected_species is invalid</span>
+                <span class="n">allowed_species</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">species_tuple_to_string</span><span class="p">(</span><span class="n">species</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">species</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_interaction_analysis</span><span class="p">[</span><span class="n">filter_mode</span><span class="p">]</span>
+                    <span class="o">.</span><span class="n">last_line_in</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;atomic_number&quot;</span><span class="p">,</span> <span class="s2">&quot;ion_number&quot;</span><span class="p">])</span>
+                    <span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+                <span class="p">]</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Invalid value of selected_species, it must be one present &quot;</span>
+                    <span class="s2">&quot;within the currently selected wavelength range in your &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;LineInfoWidget instance, which are </span><span class="si">{</span><span class="n">allowed_species</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+            <span class="n">last_line_interaction_string</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">interacting_packets_count</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="k">if</span> <span class="n">group_mode</span> <span class="o">==</span> <span class="s2">&quot;both&quot;</span><span class="p">:</span>
+                <span class="c1"># Group by both exc. line ids and de-exc. line ids</span>
+                <span class="n">current_last_lines_in</span><span class="p">[</span>
+                    <span class="s2">&quot;line_id_out&quot;</span>
+                <span class="p">]</span> <span class="o">=</span> <span class="n">current_last_lines_out</span><span class="o">.</span><span class="n">line_id</span>
+                <span class="n">grouped_line_interactions</span> <span class="o">=</span> <span class="n">current_last_lines_in</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+                    <span class="p">[</span><span class="s2">&quot;line_id&quot;</span><span class="p">,</span> <span class="s2">&quot;line_id_out&quot;</span><span class="p">]</span>
+                <span class="p">)</span>
+
+                <span class="c1"># Iterate over each group&#39;s key and size and append them to list</span>
+                <span class="k">for</span> <span class="p">(</span>
+                    <span class="n">line_id</span><span class="p">,</span>
+                    <span class="n">count</span><span class="p">,</span>
+                <span class="p">)</span> <span class="ow">in</span> <span class="n">grouped_line_interactions</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+                    <span class="n">current_line_in</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lines_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">line_id</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+                    <span class="n">current_line_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lines_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">line_id</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+                    <span class="n">last_line_interaction_string</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;exc. </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">current_line_in</span><span class="o">.</span><span class="n">level_number_lower</span><span class="p">)</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">-&quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">current_line_in</span><span class="o">.</span><span class="n">level_number_upper</span><span class="p">)</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">current_line_in</span><span class="o">.</span><span class="n">wavelength</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> A) &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;de-exc. </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">current_line_out</span><span class="o">.</span><span class="n">level_number_upper</span><span class="p">)</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">-&quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">current_line_out</span><span class="o">.</span><span class="n">level_number_lower</span><span class="p">)</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">current_line_out</span><span class="o">.</span><span class="n">wavelength</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> A)&quot;</span>
+                    <span class="p">)</span>
+                    <span class="n">interacting_packets_count</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="n">group_mode</span> <span class="o">==</span> <span class="s2">&quot;exc&quot;</span><span class="p">:</span>
+                <span class="n">grouped_line_interactions</span> <span class="o">=</span> <span class="n">current_last_lines_in</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+                    <span class="s2">&quot;line_id&quot;</span>
+                <span class="p">)</span>
+
+                <span class="c1"># Iterate over each group&#39;s key and size and append them to list</span>
+                <span class="k">for</span> <span class="p">(</span>
+                    <span class="n">line_id</span><span class="p">,</span>
+                    <span class="n">count</span><span class="p">,</span>
+                <span class="p">)</span> <span class="ow">in</span> <span class="n">grouped_line_interactions</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+                    <span class="n">current_line_in</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lines_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">line_id</span><span class="p">]</span>
+                    <span class="n">last_line_interaction_string</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;exc. </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">current_line_in</span><span class="o">.</span><span class="n">level_number_lower</span><span class="p">)</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">-&quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">current_line_in</span><span class="o">.</span><span class="n">level_number_upper</span><span class="p">)</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">current_line_in</span><span class="o">.</span><span class="n">wavelength</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> A)&quot;</span>
+                    <span class="p">)</span>
+                    <span class="n">interacting_packets_count</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="n">group_mode</span> <span class="o">==</span> <span class="s2">&quot;de-exc&quot;</span><span class="p">:</span>
+                <span class="n">grouped_line_interactions</span> <span class="o">=</span> <span class="n">current_last_lines_out</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+                    <span class="s2">&quot;line_id&quot;</span>
+                <span class="p">)</span>
+
+                <span class="c1"># Iterate over each group&#39;s key and size and append them to list</span>
+                <span class="k">for</span> <span class="p">(</span>
+                    <span class="n">line_id</span><span class="p">,</span>
+                    <span class="n">count</span><span class="p">,</span>
+                <span class="p">)</span> <span class="ow">in</span> <span class="n">grouped_line_interactions</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+                    <span class="n">current_line_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lines_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">line_id</span><span class="p">]</span>
+                    <span class="n">last_line_interaction_string</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;de-exc. </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">current_line_out</span><span class="o">.</span><span class="n">level_number_upper</span><span class="p">)</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">-&quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">current_line_out</span><span class="o">.</span><span class="n">level_number_lower</span><span class="p">)</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">current_line_out</span><span class="o">.</span><span class="n">wavelength</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> A)&quot;</span>
+                    <span class="p">)</span>
+                    <span class="n">interacting_packets_count</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Invalid value passed to group_mode argument. &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Allowed values are </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">GROUP_MODES</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># species_selected is None</span>
+            <span class="c1"># qgrid cannot show empty dataframe properly,</span>
+            <span class="c1"># so create one row with empty strings</span>
+            <span class="n">interacting_packets_count</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
+            <span class="n">last_line_interaction_string</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
+
+        <span class="n">last_line_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">interacting_packets_count</span><span class="p">)</span>
+        <span class="n">last_line_counts</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;No. of packets&quot;</span>
+        <span class="n">last_line_counts</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span>
+            <span class="n">last_line_interaction_string</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Last Line Interaction&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">last_line_counts</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="LineInfoWidget.get_middle_half_edges"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.line_info.html#tardis.visualization.widgets.line_info.LineInfoWidget.get_middle_half_edges">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_middle_half_edges</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get edges of the middle half range of an array.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        arr : np.array</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="p">]</span></div>
+
+<div class="viewcode-block" id="LineInfoWidget.plot_spectrum"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.line_info.html#tardis.visualization.widgets.line_info.LineInfoWidget.plot_spectrum">[docs]</a>    <span class="k">def</span> <span class="nf">plot_spectrum</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">wavelength</span><span class="p">,</span>
+        <span class="n">luminosity_density_lambda</span><span class="p">,</span>
+        <span class="n">virt_wavelength</span><span class="p">,</span>
+        <span class="n">virt_luminosity_density_lambda</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Produce a plotly figure widget by plotting the spectrum of model.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        wavelength : astropy.Quantity</span>
+<span class="sd">            Wavelength values of a real spectrum, having unit of Angstrom</span>
+<span class="sd">        luminosity_density_lambda : astropy.Quantity</span>
+<span class="sd">            Luminosity density lambda values of a real spectrum, having unit</span>
+<span class="sd">            of (erg/s)/Angstrom</span>
+<span class="sd">        virt_wavelength : astropy.Quantity</span>
+<span class="sd">            Wavelength values of a virtual spectrum, having unit of Angstrom</span>
+<span class="sd">        virt_luminosity_density_lambda : astropy.Quantity</span>
+<span class="sd">            Luminosity density lambda values of a virtual spectrum, having unit</span>
+<span class="sd">            of (erg/s)/Angstrom</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        plotly.graph_objects.FigureWidget</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Initially zoomed range in rangeslider should be middle half of spectrum</span>
+        <span class="n">initial_zoomed_range</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_middle_half_edges</span><span class="p">(</span><span class="n">wavelength</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="c1"># The scatter point should be a middle point in spectrum otherwise</span>
+        <span class="c1"># the extra padding around it will be oddly visible when near the edge</span>
+        <span class="n">scatter_point_idx</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">get_mid_point_idx</span><span class="p">(</span><span class="n">wavelength</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">go</span><span class="o">.</span><span class="n">FigureWidget</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+                    <span class="n">x</span><span class="o">=</span><span class="n">wavelength</span><span class="p">,</span>
+                    <span class="n">y</span><span class="o">=</span><span class="n">luminosity_density_lambda</span><span class="p">,</span>
+                    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Real packets&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+                    <span class="n">x</span><span class="o">=</span><span class="n">virt_wavelength</span><span class="p">,</span>
+                    <span class="n">y</span><span class="o">=</span><span class="n">virt_luminosity_density_lambda</span><span class="p">,</span>
+                    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Virtual packets&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="c1"># Hide a one point scatter trace, to bring boxselect in modebar</span>
+                <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+                    <span class="n">x</span><span class="o">=</span><span class="n">wavelength</span><span class="p">[</span><span class="n">scatter_point_idx</span><span class="p">],</span>
+                    <span class="n">y</span><span class="o">=</span><span class="n">luminosity_density_lambda</span><span class="p">[</span><span class="n">scatter_point_idx</span><span class="p">],</span>
+                    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;markers&quot;</span><span class="p">,</span>
+                    <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">opacity</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                    <span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">],</span>
+            <span class="n">layout</span><span class="o">=</span><span class="n">go</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span>
+                <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Spectrum&quot;</span><span class="p">,</span>
+                <span class="n">xaxis</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+                    <span class="n">title</span><span class="o">=</span><span class="n">pu</span><span class="o">.</span><span class="n">axis_label_in_latex</span><span class="p">(</span><span class="s2">&quot;Wavelength&quot;</span><span class="p">,</span> <span class="n">wavelength</span><span class="o">.</span><span class="n">unit</span><span class="p">),</span>
+                    <span class="n">exponentformat</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
+                    <span class="n">rangeslider</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">visible</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                    <span class="nb">range</span><span class="o">=</span><span class="n">initial_zoomed_range</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">yaxis</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+                    <span class="n">title</span><span class="o">=</span><span class="n">pu</span><span class="o">.</span><span class="n">axis_label_in_latex</span><span class="p">(</span>
+                        <span class="s2">&quot;Luminosity&quot;</span><span class="p">,</span>
+                        <span class="n">luminosity_density_lambda</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span>
+                    <span class="p">),</span>
+                    <span class="n">exponentformat</span><span class="o">=</span><span class="s2">&quot;e&quot;</span><span class="p">,</span>
+                    <span class="n">fixedrange</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">dragmode</span><span class="o">=</span><span class="s2">&quot;select&quot;</span><span class="p">,</span>
+                <span class="n">selectdirection</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span>
+                <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+                <span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">60</span><span class="p">),</span>
+            <span class="p">),</span>
+        <span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_update_species_interactions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wavelength_range</span><span class="p">,</span> <span class="n">filter_mode</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update data in species_interactions_table.</span>
+
+<span class="sd">        The parameters are exact same as that of :code:`get_species_interactions`.</span>
+<span class="sd">        Besides, it also does selection of 1st row in this table to trigger</span>
+<span class="sd">        update in last_line_counts_table.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Update data in species_interactions_table</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">species_interactions_table</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_species_interactions</span><span class="p">(</span>
+            <span class="n">wavelength_range</span><span class="p">,</span> <span class="n">filter_mode</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Get index of 0th row in species_interactions_table</span>
+        <span class="n">species0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">species_interactions_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># Also update last_line_counts_table by triggering its event listener</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">species_interactions_table</span><span class="o">.</span><span class="n">get_selected_rows</span><span class="p">()</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="c1"># Listener won&#39;t trigger if last row selected in</span>
+            <span class="c1"># species_interactions_table was also 0th, so unselect the rows</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">species_interactions_table</span><span class="o">.</span><span class="n">change_selection</span><span class="p">([])</span>
+        <span class="c1"># Select 0th row in this table to trigger _update_last_line_counts</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">species_interactions_table</span><span class="o">.</span><span class="n">change_selection</span><span class="p">([</span><span class="n">species0</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">_add_selection_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selector</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw a shape on plotly figure widget to represent the selection.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        selector : plotly.callbacks.BoxSelector</span>
+<span class="sd">            The object containing data about current selection made on plot</span>
+<span class="sd">            (x-axis and y-axis range of selection box)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">figure_widget</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">shapes</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="nb">dict</span><span class="p">(</span>
+                <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;rect&quot;</span><span class="p">,</span>
+                <span class="n">xref</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+                <span class="n">yref</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+                <span class="n">x0</span><span class="o">=</span><span class="n">selector</span><span class="o">.</span><span class="n">xrange</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">y0</span><span class="o">=</span><span class="n">selector</span><span class="o">.</span><span class="n">yrange</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">x1</span><span class="o">=</span><span class="n">selector</span><span class="o">.</span><span class="n">xrange</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="n">y1</span><span class="o">=</span><span class="n">selector</span><span class="o">.</span><span class="n">yrange</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+                    <span class="n">color</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">COLORS</span><span class="p">[</span><span class="s2">&quot;selection_border&quot;</span><span class="p">],</span>
+                    <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">fillcolor</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">COLORS</span><span class="p">[</span><span class="s2">&quot;selection_area&quot;</span><span class="p">],</span>
+                <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_update_last_line_counts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">species</span><span class="p">,</span> <span class="n">filter_mode</span><span class="p">,</span> <span class="n">group_mode</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update data in last_line_counts_table and associated total_packets_label.</span>
+
+<span class="sd">        The parameters are exact same as that of :code:`get_last_line_counts`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Update data in line counts table</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_line_counts_table</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_last_line_counts</span><span class="p">(</span>
+            <span class="n">species</span><span class="p">,</span> <span class="n">filter_mode</span><span class="p">,</span> <span class="n">group_mode</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Update its corresponding total_packets_label</span>
+        <span class="k">if</span> <span class="n">species</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">total_packets_label</span><span class="o">.</span><span class="n">update_and_resize</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">last_line_counts_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># Line counts table will be empty</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">total_packets_label</span><span class="o">.</span><span class="n">update_and_resize</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_spectrum_selection_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trace</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">selector</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Event handler for selection of spectrum in plotly figure widget.</span>
+
+<span class="sd">        This method has the expected signature of the callback function passed</span>
+<span class="sd">        to :code:`on_selection` method of a plotly trace as explained in</span>
+<span class="sd">        `their docs &lt;https://plotly.com/python-api-reference/generated/plotly.html#plotly.basedatatypes.BaseTraceType.on_selection&gt;`_.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">selector</span><span class="p">,</span> <span class="n">BoxSelector</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_add_selection_box</span><span class="p">(</span><span class="n">selector</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_species_interactions</span><span class="p">(</span>
+                <span class="n">selector</span><span class="o">.</span><span class="n">xrange</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">FILTER_MODES</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">filter_mode_buttons</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_filter_mode_toggle_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">change</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Event handler for toggle in filter_mode_buttons.</span>
+
+<span class="sd">        This method has the expected signature of the callback function</span>
+<span class="sd">        passed to :code:`observe` method of ipywidgets as explained in</span>
+<span class="sd">        `their docs &lt;https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20Events.html#Signatures&gt;`_.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">wavelength_range</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">figure_widget</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">shapes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;x0&quot;</span><span class="p">,</span> <span class="s2">&quot;x1&quot;</span><span class="p">)</span>
+            <span class="p">]</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>  <span class="c1"># No selection is made on figure widget</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_species_interactions</span><span class="p">(</span>
+            <span class="n">wavelength_range</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">FILTER_MODES</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">filter_mode_buttons</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_species_intrctn_selection_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">qgrid_widget</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Event handler for selection in species_interactions_table.</span>
+
+<span class="sd">        This method has the expected signature of the function passed to</span>
+<span class="sd">        :code:`handler` argument of :code:`on_selection` method of qgrid.QgridWidget</span>
+<span class="sd">        as explained in `their docs &lt;https://qgrid.readthedocs.io/en/latest/#qgrid.QgridWidget.on&gt;`_.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Don&#39;t execute function if no row was selected implicitly (by api)</span>
+        <span class="k">if</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="p">[]</span> <span class="ow">and</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;api&quot;</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Get species from the selected row in species_interactions_table</span>
+        <span class="n">species_selected</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">species_interactions_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span>
+            <span class="n">event</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="n">species_selected</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>  <span class="c1"># when species_interactions_table is empty</span>
+            <span class="n">species_selected</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_last_line_counts</span><span class="p">(</span>
+            <span class="n">species_selected</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">FILTER_MODES</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">filter_mode_buttons</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">GROUP_MODES</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">group_mode_dropdown</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_group_mode_dropdown_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">change</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Event handler for selection in group_mode_dropdown.</span>
+
+<span class="sd">        This method has the expected signature of the callback function</span>
+<span class="sd">        passed to :code:`observe` method of ipywidgets as explained in</span>
+<span class="sd">        `their docs &lt;https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20Events.html#Signatures&gt;`_.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">selected_row_idx</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">species_interactions_table</span><span class="o">.</span><span class="n">get_selected_rows</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">species_selected</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">species_interactions_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span>
+                <span class="n">selected_row_idx</span>
+            <span class="p">]</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>  <span class="c1"># No row is selected in species_interactions_table</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_last_line_counts</span><span class="p">(</span>
+            <span class="n">species_selected</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">FILTER_MODES</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">filter_mode_buttons</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">GROUP_MODES</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">group_mode_dropdown</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="LineInfoWidget.ui_control_description"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.line_info.html#tardis.visualization.widgets.line_info.LineInfoWidget.ui_control_description">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">ui_control_description</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get description label of a UI control with increased font size.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ipw</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;span style=&#39;font-size: 1.15em;&#39;&gt;</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">:&lt;/span&gt;&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LineInfoWidget.display"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.line_info.html#tardis.visualization.widgets.line_info.LineInfoWidget.display">[docs]</a>    <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Display the fully-functional line info widget.</span>
+
+<span class="sd">        It puts together all component widgets nicely together and enables</span>
+<span class="sd">        interaction between all the components.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ipywidgets.Box</span>
+<span class="sd">            Line info widget containing all component widgets</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Set widths of widgets</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">species_interactions_table</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s2">&quot;350px&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_line_counts_table</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s2">&quot;450px&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_packets_label</span><span class="o">.</span><span class="n">update_and_resize</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">group_mode_dropdown</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span>
+
+        <span class="c1"># Attach event listeners to widgets</span>
+        <span class="n">spectrum_trace</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure_widget</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">spectrum_trace</span><span class="o">.</span><span class="n">on_selection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_spectrum_selection_handler</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filter_mode_buttons</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_filter_mode_toggle_handler</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s2">&quot;index&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">species_interactions_table</span><span class="o">.</span><span class="n">on</span><span class="p">(</span>
+            <span class="s2">&quot;selection_changed&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_species_intrctn_selection_handler</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">group_mode_dropdown</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_group_mode_dropdown_handler</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s2">&quot;index&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">selection_box_symbol</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">&quot;&lt;span style=&#39;display: inline-block; &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;background-color: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">&#39;selection_area&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">; &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;border: 1px solid </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">&#39;selection_border&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">; &quot;</span>
+            <span class="s2">&quot;width: 0.8em; height: 1.2em; vertical-align: middle;&#39;&gt;&lt;/span&gt;&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">table_container_left</span> <span class="o">=</span> <span class="n">ipw</span><span class="o">.</span><span class="n">VBox</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ui_control_description</span><span class="p">(</span>
+                    <span class="s2">&quot;Filter selected wavelength range &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;( </span><span class="si">{</span><span class="n">selection_box_symbol</span><span class="si">}</span><span class="s2"> ) by&quot;</span>
+                <span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">filter_mode_buttons</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">species_interactions_table</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="n">layout</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="s2">&quot;0px 15px&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="n">table_container_right</span> <span class="o">=</span> <span class="n">ipw</span><span class="o">.</span><span class="n">VBox</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ui_control_description</span><span class="p">(</span><span class="s2">&quot;Group packet counts by&quot;</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">group_mode_dropdown</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">last_line_counts_table</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">total_packets_label</span><span class="o">.</span><span class="n">widget</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="n">layout</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="s2">&quot;0px 15px&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ipw</span><span class="o">.</span><span class="n">VBox</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">figure_widget</span><span class="p">,</span>
+                <span class="n">ipw</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="n">table_container_left</span><span class="p">,</span>
+                        <span class="n">table_container_right</span><span class="p">,</span>
+                    <span class="p">],</span>
+                    <span class="n">layout</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+                        <span class="n">display</span><span class="o">=</span><span class="s2">&quot;flex&quot;</span><span class="p">,</span>
+                        <span class="n">align_items</span><span class="o">=</span><span class="s2">&quot;flex-start&quot;</span><span class="p">,</span>
+                        <span class="n">justify_content</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+                        <span class="n">height</span><span class="o">=</span><span class="s2">&quot;420px&quot;</span><span class="p">,</span>
+                    <span class="p">),</span>
+                <span class="p">),</span>
+            <span class="p">]</span>
+        <span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2013-2021, TARDIS Collaboration.
+      <span class="lastupdated">
+        Last updated on 12 Jul 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

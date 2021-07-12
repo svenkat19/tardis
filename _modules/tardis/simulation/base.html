@@ -1,0 +1,858 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>tardis.simulation.base &mdash; tardis v2021.7.12.0.dev3+g7d3899ed</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/plot_directive.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/tardis_logo.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link href="../../../_static/tardis.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> tardis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2021.7.12.0.dev3+g7d3899ed
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart/quickstart.html">Quickstart for TARDIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Input/Output</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../io/configuration/index.html">Configuration (Required Input)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../io/optional/index.html">Optional Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../io/visualization/index.html">Visualization Tools &amp; Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../io/output/index.html">Additional Outputs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Physics Walkthrough</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../physics/setup/index.html">Setting Up the Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../physics/montecarlo/index.html">Monte Carlo Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../physics/est_and_conv/index.html">Estimators and Convergence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../physics/spectrum/index.html">Spectrum Generation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Research with TARDIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../research/index.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team &amp; Credits</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../team_and_governance/index.html">Team and Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../credits.html">Credits &amp; Publication Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CODE_OF_CONDUCT.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sponsors.html">Sponsors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to TARDIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">Contribution Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Developer Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap.html">Development Roadmap</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">tardis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zreferences.html">TARDIS Papers and useful References</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Outdated</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../outdated/index.html">Outdated Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">tardis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tardis.simulation.base</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tardis.simulation.base</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span><span class="p">,</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+
+<span class="kn">from</span> <span class="nn">tardis.montecarlo</span> <span class="kn">import</span> <span class="n">MontecarloRunner</span>
+<span class="kn">from</span> <span class="nn">tardis.model</span> <span class="kn">import</span> <span class="n">Radial1DModel</span>
+<span class="kn">from</span> <span class="nn">tardis.plasma.standard_plasmas</span> <span class="kn">import</span> <span class="n">assemble_plasma</span>
+<span class="kn">from</span> <span class="nn">tardis.io.util</span> <span class="kn">import</span> <span class="n">HDFWriterMixin</span>
+<span class="kn">from</span> <span class="nn">tardis.io.config_reader</span> <span class="kn">import</span> <span class="n">ConfigurationError</span>
+<span class="kn">from</span> <span class="nn">tardis.util.base</span> <span class="kn">import</span> <span class="n">is_notebook</span>
+<span class="kn">from</span> <span class="nn">tardis.montecarlo</span> <span class="kn">import</span> <span class="n">montecarlo_configuration</span> <span class="k">as</span> <span class="n">mc_config_module</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+
+<span class="c1"># Adding logging support</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="PlasmaStateStorerMixin"><a class="viewcode-back" href="../../../api/tardis.simulation.base.html#tardis.simulation.base.PlasmaStateStorerMixin">[docs]</a><span class="k">class</span> <span class="nc">PlasmaStateStorerMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Mixin class to provide the capability to the simulation object of</span>
+<span class="sd">    storing plasma information and the inner boundary temperature during each</span>
+<span class="sd">    MC iteration.</span>
+
+<span class="sd">    Currently, storage for the dilution factor, the radiation temperature and</span>
+<span class="sd">    the electron density in each cell is provided. Additionally, the</span>
+<span class="sd">    temperature at the inner boundary is saved.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iterations</span><span class="p">,</span> <span class="n">no_of_shells</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterations_w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">iterations</span><span class="p">,</span> <span class="n">no_of_shells</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterations_t_rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">iterations</span><span class="p">,</span> <span class="n">no_of_shells</span><span class="p">))</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">K</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterations_electron_densities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="n">no_of_shells</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterations_t_inner</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">iterations</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">K</span>
+
+<div class="viewcode-block" id="PlasmaStateStorerMixin.store_plasma_state"><a class="viewcode-back" href="../../../api/tardis.simulation.base.html#tardis.simulation.base.PlasmaStateStorerMixin.store_plasma_state">[docs]</a>    <span class="k">def</span> <span class="nf">store_plasma_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">t_rad</span><span class="p">,</span> <span class="n">electron_densities</span><span class="p">,</span> <span class="n">t_inner</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Store current plasma information and inner boundary temperature</span>
+<span class="sd">        used in iterated i.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        i : int</span>
+<span class="sd">            current iteration index (0 for the first)</span>
+<span class="sd">        w : np.ndarray</span>
+<span class="sd">            dilution factor</span>
+<span class="sd">        t_rad : astropy.units.Quantity</span>
+<span class="sd">            radiation temperature</span>
+<span class="sd">        electron_densities : np.ndarray</span>
+<span class="sd">            electron density</span>
+<span class="sd">        t_inner : astropy.units.Quantity</span>
+<span class="sd">            temperature of inner boundary</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterations_w</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">w</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterations_t_rad</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">t_rad</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterations_electron_densities</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">electron_densities</span><span class="o">.</span><span class="n">values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterations_t_inner</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">t_inner</span></div>
+
+<div class="viewcode-block" id="PlasmaStateStorerMixin.reshape_plasma_state_store"><a class="viewcode-back" href="../../../api/tardis.simulation.base.html#tardis.simulation.base.PlasmaStateStorerMixin.reshape_plasma_state_store">[docs]</a>    <span class="k">def</span> <span class="nf">reshape_plasma_state_store</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">executed_iterations</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reshapes the storage arrays in case convergence was reached before</span>
+<span class="sd">        all specified iterations were executed.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        executed_iterations : int</span>
+<span class="sd">            iteration index, i.e. number of iterations executed minus one!</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterations_w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterations_w</span><span class="p">[:</span> <span class="n">executed_iterations</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterations_t_rad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterations_t_rad</span><span class="p">[</span>
+            <span class="p">:</span> <span class="n">executed_iterations</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterations_electron_densities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterations_electron_densities</span><span class="p">[</span>
+            <span class="p">:</span> <span class="n">executed_iterations</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterations_t_inner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterations_t_inner</span><span class="p">[</span>
+            <span class="p">:</span> <span class="n">executed_iterations</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="p">]</span></div></div>
+
+
+<div class="viewcode-block" id="Simulation"><a class="viewcode-back" href="../../../api/tardis.simulation.base.html#tardis.simulation.base.Simulation">[docs]</a><span class="k">class</span> <span class="nc">Simulation</span><span class="p">(</span><span class="n">PlasmaStateStorerMixin</span><span class="p">,</span> <span class="n">HDFWriterMixin</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A composite object containing all the required information for a</span>
+<span class="sd">    simulation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    converged : bool</span>
+<span class="sd">    iterations : int</span>
+<span class="sd">    model : tardis.model.Radial1DModel</span>
+<span class="sd">    plasma : tardis.plasma.BasePlasma</span>
+<span class="sd">    runner : tardis.montecarlo.MontecarloRunner</span>
+<span class="sd">    no_of_packets : int</span>
+<span class="sd">    last_no_of_packets : int</span>
+<span class="sd">    no_of_virtual_packets : int</span>
+<span class="sd">    luminosity_nu_start : astropy.units.Quantity</span>
+<span class="sd">    luminosity_nu_end : astropy.units.Quantity</span>
+<span class="sd">    luminosity_requested : astropy.units.Quantity</span>
+<span class="sd">    nthreads : int</span>
+<span class="sd">        The number of threads to run montecarlo with</span>
+
+<span class="sd">        .. note:: TARDIS must be built with OpenMP support in order for ``nthreads`` to have effect.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">hdf_properties</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;model&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;plasma&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;runner&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;iterations_w&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;iterations_t_rad&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;iterations_electron_densities&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;iterations_t_inner&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="n">hdf_name</span> <span class="o">=</span> <span class="s2">&quot;simulation&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">iterations</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">,</span>
+        <span class="n">plasma</span><span class="p">,</span>
+        <span class="n">runner</span><span class="p">,</span>
+        <span class="n">no_of_packets</span><span class="p">,</span>
+        <span class="n">no_of_virtual_packets</span><span class="p">,</span>
+        <span class="n">luminosity_nu_start</span><span class="p">,</span>
+        <span class="n">luminosity_nu_end</span><span class="p">,</span>
+        <span class="n">last_no_of_packets</span><span class="p">,</span>
+        <span class="n">luminosity_requested</span><span class="p">,</span>
+        <span class="n">convergence_strategy</span><span class="p">,</span>
+        <span class="n">nthreads</span><span class="p">,</span>
+    <span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">Simulation</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">no_of_shells</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">converged</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterations</span> <span class="o">=</span> <span class="n">iterations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterations_executed</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plasma</span> <span class="o">=</span> <span class="n">plasma</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_of_packets</span> <span class="o">=</span> <span class="n">no_of_packets</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_no_of_packets</span> <span class="o">=</span> <span class="n">last_no_of_packets</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_of_virtual_packets</span> <span class="o">=</span> <span class="n">no_of_virtual_packets</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">luminosity_nu_start</span> <span class="o">=</span> <span class="n">luminosity_nu_start</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">luminosity_nu_end</span> <span class="o">=</span> <span class="n">luminosity_nu_end</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">luminosity_requested</span> <span class="o">=</span> <span class="n">luminosity_requested</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nthreads</span> <span class="o">=</span> <span class="n">nthreads</span>
+        <span class="k">if</span> <span class="n">convergence_strategy</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;damped&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">convergence_strategy</span> <span class="o">=</span> <span class="n">convergence_strategy</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">converged</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">consecutive_converges_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">convergence_strategy</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;custom&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                <span class="s2">&quot;Convergence strategy type is custom; &quot;</span>
+                <span class="s2">&quot;you need to implement your specific treatment!&quot;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Convergence strategy type is &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;not damped or custom &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;- input is </span><span class="si">{</span><span class="n">convergence_strategy</span><span class="o">.</span><span class="n">type</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cb_next_id</span> <span class="o">=</span> <span class="mi">0</span>
+
+<div class="viewcode-block" id="Simulation.estimate_t_inner"><a class="viewcode-back" href="../../../api/tardis.simulation.base.html#tardis.simulation.base.Simulation.estimate_t_inner">[docs]</a>    <span class="k">def</span> <span class="nf">estimate_t_inner</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">input_t_inner</span><span class="p">,</span> <span class="n">luminosity_requested</span><span class="p">,</span> <span class="n">t_inner_update_exponent</span><span class="o">=-</span><span class="mf">0.5</span>
+    <span class="p">):</span>
+        <span class="n">emitted_luminosity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">calculate_emitted_luminosity</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">luminosity_nu_start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">luminosity_nu_end</span>
+        <span class="p">)</span>
+
+        <span class="n">luminosity_ratios</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">(</span><span class="n">emitted_luminosity</span> <span class="o">/</span> <span class="n">luminosity_requested</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">input_t_inner</span> <span class="o">*</span> <span class="n">luminosity_ratios</span> <span class="o">**</span> <span class="n">t_inner_update_exponent</span></div>
+
+<div class="viewcode-block" id="Simulation.damped_converge"><a class="viewcode-back" href="../../../api/tardis.simulation.base.html#tardis.simulation.base.Simulation.damped_converge">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">damped_converge</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">estimated_value</span><span class="p">,</span> <span class="n">damping_factor</span><span class="p">):</span>
+        <span class="c1"># FIXME: Should convergence strategy have its own class containing this</span>
+        <span class="c1"># as a method</span>
+        <span class="k">return</span> <span class="n">value</span> <span class="o">+</span> <span class="n">damping_factor</span> <span class="o">*</span> <span class="p">(</span><span class="n">estimated_value</span> <span class="o">-</span> <span class="n">value</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_convergence_status</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">t_rad</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">t_inner</span><span class="p">,</span> <span class="n">estimated_t_rad</span><span class="p">,</span> <span class="n">estimated_w</span><span class="p">,</span> <span class="n">estimated_t_inner</span>
+    <span class="p">):</span>
+        <span class="c1"># FIXME: Move the convergence checking in its own class.</span>
+        <span class="n">no_of_shells</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">no_of_shells</span>
+
+        <span class="n">convergence_t_rad</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="nb">abs</span><span class="p">(</span><span class="n">t_rad</span> <span class="o">-</span> <span class="n">estimated_t_rad</span><span class="p">)</span> <span class="o">/</span> <span class="n">estimated_t_rad</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">convergence_w</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">w</span> <span class="o">-</span> <span class="n">estimated_w</span><span class="p">)</span> <span class="o">/</span> <span class="n">estimated_w</span>
+        <span class="n">convergence_t_inner</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="nb">abs</span><span class="p">(</span><span class="n">t_inner</span> <span class="o">-</span> <span class="n">estimated_t_inner</span><span class="p">)</span> <span class="o">/</span> <span class="n">estimated_t_inner</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">value</span>
+
+        <span class="n">fraction_t_rad_converged</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span>
+                <span class="n">convergence_t_rad</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">convergence_strategy</span><span class="o">.</span><span class="n">t_rad</span><span class="o">.</span><span class="n">threshold</span>
+            <span class="p">)</span>
+            <span class="o">/</span> <span class="n">no_of_shells</span>
+        <span class="p">)</span>
+
+        <span class="n">t_rad_converged</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">fraction_t_rad_converged</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">convergence_strategy</span><span class="o">.</span><span class="n">fraction</span>
+        <span class="p">)</span>
+
+        <span class="n">fraction_w_converged</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span>
+                <span class="n">convergence_w</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">convergence_strategy</span><span class="o">.</span><span class="n">w</span><span class="o">.</span><span class="n">threshold</span>
+            <span class="p">)</span>
+            <span class="o">/</span> <span class="n">no_of_shells</span>
+        <span class="p">)</span>
+
+        <span class="n">w_converged</span> <span class="o">=</span> <span class="n">fraction_w_converged</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">convergence_strategy</span><span class="o">.</span><span class="n">fraction</span>
+
+        <span class="n">t_inner_converged</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">convergence_t_inner</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">convergence_strategy</span><span class="o">.</span><span class="n">t_inner</span><span class="o">.</span><span class="n">threshold</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">([</span><span class="n">t_rad_converged</span><span class="p">,</span> <span class="n">w_converged</span><span class="p">,</span> <span class="n">t_inner_converged</span><span class="p">]):</span>
+            <span class="n">hold_iterations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convergence_strategy</span><span class="o">.</span><span class="n">hold_iterations</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">consecutive_converges_count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Iteration converged </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">consecutive_converges_count</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="p">(</span><span class="n">hold_iterations</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2"> consecutive &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;times.&quot;</span>
+            <span class="p">)</span>
+            <span class="c1"># If an iteration has converged, require hold_iterations more</span>
+            <span class="c1"># iterations to converge before we conclude that the Simulation</span>
+            <span class="c1"># is converged.</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">consecutive_converges_count</span> <span class="o">==</span> <span class="n">hold_iterations</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">consecutive_converges_count</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="Simulation.advance_state"><a class="viewcode-back" href="../../../api/tardis.simulation.base.html#tardis.simulation.base.Simulation.advance_state">[docs]</a>    <span class="k">def</span> <span class="nf">advance_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Advances the state of the model and the plasma for the next</span>
+<span class="sd">        iteration of the simulation. Returns True if the convergence criteria</span>
+<span class="sd">        are met, else False.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            converged : bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="p">(</span>
+            <span class="n">estimated_t_rad</span><span class="p">,</span>
+            <span class="n">estimated_w</span><span class="p">,</span>
+        <span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">calculate_radiationfield_properties</span><span class="p">()</span>
+        <span class="n">estimated_t_inner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimate_t_inner</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">t_inner</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">luminosity_requested</span><span class="p">,</span>
+            <span class="n">t_inner_update_exponent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">convergence_strategy</span><span class="o">.</span><span class="n">t_inner_update_exponent</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">converged</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_convergence_status</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">t_rad</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">w</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">t_inner</span><span class="p">,</span>
+            <span class="n">estimated_t_rad</span><span class="p">,</span>
+            <span class="n">estimated_w</span><span class="p">,</span>
+            <span class="n">estimated_t_inner</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># calculate_next_plasma_state equivalent</span>
+        <span class="c1"># FIXME: Should convergence strategy have its own class?</span>
+        <span class="n">next_t_rad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">damped_converge</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">t_rad</span><span class="p">,</span>
+            <span class="n">estimated_t_rad</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">convergence_strategy</span><span class="o">.</span><span class="n">t_rad</span><span class="o">.</span><span class="n">damping_constant</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">next_w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">damped_converge</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">w</span><span class="p">,</span>
+            <span class="n">estimated_w</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">convergence_strategy</span><span class="o">.</span><span class="n">w</span><span class="o">.</span><span class="n">damping_constant</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">iterations_executed</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="p">)</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">convergence_strategy</span><span class="o">.</span><span class="n">lock_t_inner_cycles</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">next_t_inner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">damped_converge</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">t_inner</span><span class="p">,</span>
+                <span class="n">estimated_t_inner</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">convergence_strategy</span><span class="o">.</span><span class="n">t_inner</span><span class="o">.</span><span class="n">damping_constant</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">next_t_inner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">t_inner</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_plasma_state</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">t_rad</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">w</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">t_inner</span><span class="p">,</span>
+            <span class="n">next_t_rad</span><span class="p">,</span>
+            <span class="n">next_w</span><span class="p">,</span>
+            <span class="n">next_t_inner</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">t_rad</span> <span class="o">=</span> <span class="n">next_t_rad</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">next_w</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">t_inner</span> <span class="o">=</span> <span class="n">next_t_inner</span>
+
+        <span class="c1"># model.calculate_j_blues() equivalent</span>
+        <span class="c1"># model.update_plasmas() equivalent</span>
+        <span class="c1"># Bad test to see if this is a nlte run</span>
+        <span class="k">if</span> <span class="s2">&quot;nlte_data&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">plasma</span><span class="o">.</span><span class="n">outputs_dict</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plasma</span><span class="o">.</span><span class="n">store_previous_properties</span><span class="p">()</span>
+
+        <span class="n">update_properties</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">t_rad</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">t_rad</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
+        <span class="c1"># A check to see if the plasma is set with JBluesDetailed, in which</span>
+        <span class="c1"># case it needs some extra kwargs.</span>
+        <span class="k">if</span> <span class="s2">&quot;j_blue_estimator&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">plasma</span><span class="o">.</span><span class="n">outputs_dict</span><span class="p">:</span>
+            <span class="n">update_properties</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                <span class="n">t_inner</span><span class="o">=</span><span class="n">next_t_inner</span><span class="p">,</span>
+                <span class="n">j_blue_estimator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">j_blue_estimator</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">plasma</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">update_properties</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">converged</span></div>
+
+<div class="viewcode-block" id="Simulation.iterate"><a class="viewcode-back" href="../../../api/tardis.simulation.base.html#tardis.simulation.base.Simulation.iterate">[docs]</a>    <span class="k">def</span> <span class="nf">iterate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">no_of_packets</span><span class="p">,</span> <span class="n">no_of_virtual_packets</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">last_run</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">Starting iteration </span><span class="si">{</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iterations_executed</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2"> of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">iterations</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plasma</span><span class="p">,</span>
+            <span class="n">no_of_packets</span><span class="p">,</span>
+            <span class="n">no_of_virtual_packets</span><span class="o">=</span><span class="n">no_of_virtual_packets</span><span class="p">,</span>
+            <span class="n">nthreads</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nthreads</span><span class="p">,</span>
+            <span class="n">last_run</span><span class="o">=</span><span class="n">last_run</span><span class="p">,</span>
+            <span class="n">iteration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">iterations_executed</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">output_energy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">output_energy</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">output_energy</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">output_energy</span><span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s2">&quot;No r-packet escaped through the outer boundary.&quot;</span><span class="p">)</span>
+
+        <span class="n">emitted_luminosity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">calculate_emitted_luminosity</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">luminosity_nu_start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">luminosity_nu_end</span>
+        <span class="p">)</span>
+        <span class="n">reabsorbed_luminosity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">calculate_reabsorbed_luminosity</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">luminosity_nu_start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">luminosity_nu_end</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_run_results</span><span class="p">(</span><span class="n">emitted_luminosity</span><span class="p">,</span> <span class="n">reabsorbed_luminosity</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterations_executed</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="Simulation.run"><a class="viewcode-back" href="../../../api/tardis.simulation.base.html#tardis.simulation.base.Simulation.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        run the simulation</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterations_executed</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterations</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">store_plasma_state</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">iterations_executed</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">w</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">t_rad</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">plasma</span><span class="o">.</span><span class="n">electron_densities</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">t_inner</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">iterate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">no_of_packets</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">converged</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">advance_state</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_call_back</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">converged</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">convergence_strategy</span><span class="o">.</span><span class="n">stop_if_converged</span><span class="p">:</span>
+                    <span class="k">break</span>
+        <span class="c1"># Last iteration</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">store_plasma_state</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">iterations_executed</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">w</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">t_rad</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plasma</span><span class="o">.</span><span class="n">electron_densities</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">t_inner</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterate</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">last_no_of_packets</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">no_of_virtual_packets</span><span class="p">,</span> <span class="n">last_run</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">reshape_plasma_state_store</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iterations_executed</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">Simulation finished in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">iterations_executed</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2"> iterations &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">Simulation took </span><span class="si">{</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_back</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Simulation.log_plasma_state"><a class="viewcode-back" href="../../../api/tardis.simulation.base.html#tardis.simulation.base.Simulation.log_plasma_state">[docs]</a>    <span class="k">def</span> <span class="nf">log_plasma_state</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">t_rad</span><span class="p">,</span>
+        <span class="n">w</span><span class="p">,</span>
+        <span class="n">t_inner</span><span class="p">,</span>
+        <span class="n">next_t_rad</span><span class="p">,</span>
+        <span class="n">next_w</span><span class="p">,</span>
+        <span class="n">next_t_inner</span><span class="p">,</span>
+        <span class="n">log_sampling</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Logging the change of the plasma state</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        t_rad : astropy.units.Quanity</span>
+<span class="sd">            current t_rad</span>
+<span class="sd">        w : astropy.units.Quanity</span>
+<span class="sd">            current w</span>
+<span class="sd">        next_t_rad : astropy.units.Quanity</span>
+<span class="sd">            next t_rad</span>
+<span class="sd">        next_w : astropy.units.Quanity</span>
+<span class="sd">            next_w</span>
+<span class="sd">        log_sampling : int</span>
+<span class="sd">            the n-th shells to be plotted</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">plasma_state_log</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_rad</span><span class="p">)),</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;t_rad&quot;</span><span class="p">,</span> <span class="s2">&quot;next_t_rad&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="s2">&quot;next_w&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+        <span class="n">plasma_state_log</span><span class="p">[</span><span class="s2">&quot;t_rad&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">t_rad</span>
+        <span class="n">plasma_state_log</span><span class="p">[</span><span class="s2">&quot;next_t_rad&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">next_t_rad</span>
+        <span class="n">plasma_state_log</span><span class="p">[</span><span class="s2">&quot;w&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">w</span>
+        <span class="n">plasma_state_log</span><span class="p">[</span><span class="s2">&quot;next_w&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">next_w</span>
+        <span class="n">plasma_state_log</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Shell No.&quot;</span>
+
+        <span class="k">if</span> <span class="n">is_notebook</span><span class="p">():</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">Plasma stratification:&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Displaying the DataFrame only when the logging level is NOTSET, DEBUG or INFO</span>
+            <span class="k">if</span> <span class="n">logger</span><span class="o">.</span><span class="n">level</span> <span class="o">&lt;=</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">logger</span><span class="o">.</span><span class="n">filters</span><span class="p">:</span>
+                    <span class="n">display</span><span class="p">(</span>
+                        <span class="n">plasma_state_log</span><span class="o">.</span><span class="n">iloc</span><span class="p">[::</span><span class="n">log_sampling</span><span class="p">]</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                            <span class="s2">&quot;</span><span class="si">{:.3g}</span><span class="s2">&quot;</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="k">elif</span> <span class="n">logger</span><span class="o">.</span><span class="n">filters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">log_level</span> <span class="o">==</span> <span class="mi">20</span><span class="p">:</span>
+                    <span class="n">display</span><span class="p">(</span>
+                        <span class="n">plasma_state_log</span><span class="o">.</span><span class="n">iloc</span><span class="p">[::</span><span class="n">log_sampling</span><span class="p">]</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                            <span class="s2">&quot;</span><span class="si">{:.3g}</span><span class="s2">&quot;</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">output_df</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">plasma_output</span> <span class="o">=</span> <span class="n">plasma_state_log</span><span class="o">.</span><span class="n">iloc</span><span class="p">[::</span><span class="n">log_sampling</span><span class="p">]</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span>
+                <span class="n">float_format</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{:.3g}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+                <span class="n">justify</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">plasma_output</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
+                <span class="n">output_df</span> <span class="o">=</span> <span class="n">output_df</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">Plasma stratification:&quot;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">output_df</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">Current t_inner = </span><span class="si">{</span><span class="n">t_inner</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="se">\n\t</span><span class="s2">Expected t_inner for next iteration = </span><span class="si">{</span><span class="n">next_t_inner</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Simulation.log_run_results"><a class="viewcode-back" href="../../../api/tardis.simulation.base.html#tardis.simulation.base.Simulation.log_run_results">[docs]</a>    <span class="k">def</span> <span class="nf">log_run_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emitted_luminosity</span><span class="p">,</span> <span class="n">absorbed_luminosity</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">Luminosity emitted   = </span><span class="si">{</span><span class="n">emitted_luminosity</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Luminosity absorbed  = </span><span class="si">{</span><span class="n">absorbed_luminosity</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Luminosity requested = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">luminosity_requested</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_call_back</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">cb</span><span class="p">,</span> <span class="n">args</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Simulation.add_callback"><a class="viewcode-back" href="../../../api/tardis.simulation.base.html#tardis.simulation.base.Simulation.add_callback">[docs]</a>    <span class="k">def</span> <span class="nf">add_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cb_func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add a function which will be called</span>
+<span class="sd">        after every iteration.</span>
+
+<span class="sd">        The cb_func signature must look like:</span>
+<span class="sd">        cb_func(simulation, extra_arg1, ...)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cb_func : callable</span>
+<span class="sd">            The callback function</span>
+<span class="sd">        arg1 :</span>
+<span class="sd">            The first additional arguments passed to the callable function</span>
+<span class="sd">        ...</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        : int</span>
+<span class="sd">            The callback ID</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cb_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cb_next_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="p">[</span><span class="n">cb_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">cb_func</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cb_next_id</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">cb_id</span></div>
+
+<div class="viewcode-block" id="Simulation.remove_callback"><a class="viewcode-back" href="../../../api/tardis.simulation.base.html#tardis.simulation.base.Simulation.remove_callback">[docs]</a>    <span class="k">def</span> <span class="nf">remove_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remove the callback with a specific ID (which was returned by</span>
+<span class="sd">        add_callback)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        id : int</span>
+<span class="sd">            The callback ID</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        : True if the callback was successfully removed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="Simulation.from_config"><a class="viewcode-back" href="../../../api/tardis.simulation.base.html#tardis.simulation.base.Simulation.from_config">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">packet_source</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">virtual_packet_logging</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a new Simulation instance from a Configuration object.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        config : tardis.io.config_reader.Configuration</span>
+
+<span class="sd">        **kwargs</span>
+<span class="sd">            Allow overriding some structures, such as model, plasma, atomic data</span>
+<span class="sd">            and the runner, instead of creating them from the configuration</span>
+<span class="sd">            object.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Simulation</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Allow overriding some config structures. This is useful in some</span>
+        <span class="c1"># unit tests, and could be extended in all the from_config classmethods.</span>
+        <span class="k">if</span> <span class="s2">&quot;model&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;csvy_model&quot;</span><span class="p">):</span>
+                <span class="n">model</span> <span class="o">=</span> <span class="n">Radial1DModel</span><span class="o">.</span><span class="n">from_csvy</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">model</span> <span class="o">=</span> <span class="n">Radial1DModel</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;plasma&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">plasma</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;plasma&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">plasma</span> <span class="o">=</span> <span class="n">assemble_plasma</span><span class="p">(</span>
+                <span class="n">config</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">atom_data</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;atom_data&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;runner&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">packet_source</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span>
+                    <span class="s2">&quot;Cannot specify packet_source and runner at the same time.&quot;</span>
+                <span class="p">)</span>
+            <span class="n">runner</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;runner&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">runner</span> <span class="o">=</span> <span class="n">MontecarloRunner</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
+                <span class="n">config</span><span class="p">,</span>
+                <span class="n">packet_source</span><span class="o">=</span><span class="n">packet_source</span><span class="p">,</span>
+                <span class="n">virtual_packet_logging</span><span class="o">=</span><span class="n">virtual_packet_logging</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">luminosity_nu_start</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">supernova</span><span class="o">.</span><span class="n">luminosity_wavelength_end</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+            <span class="n">u</span><span class="o">.</span><span class="n">Hz</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">spectral</span><span class="p">()</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">supernova</span><span class="o">.</span><span class="n">luminosity_wavelength_start</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">angstrom</span>
+        <span class="p">):</span>
+            <span class="n">luminosity_nu_end</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Hz</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">luminosity_nu_end</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">const</span><span class="o">.</span><span class="n">c</span> <span class="o">/</span> <span class="n">config</span><span class="o">.</span><span class="n">supernova</span><span class="o">.</span><span class="n">luminosity_wavelength_start</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Hz</span><span class="p">)</span>
+
+        <span class="n">last_no_of_packets</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">montecarlo</span><span class="o">.</span><span class="n">last_no_of_packets</span>
+        <span class="k">if</span> <span class="n">last_no_of_packets</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">last_no_of_packets</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">last_no_of_packets</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">montecarlo</span><span class="o">.</span><span class="n">no_of_packets</span>
+        <span class="n">last_no_of_packets</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">last_no_of_packets</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">iterations</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">montecarlo</span><span class="o">.</span><span class="n">iterations</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+            <span class="n">plasma</span><span class="o">=</span><span class="n">plasma</span><span class="p">,</span>
+            <span class="n">runner</span><span class="o">=</span><span class="n">runner</span><span class="p">,</span>
+            <span class="n">no_of_packets</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">montecarlo</span><span class="o">.</span><span class="n">no_of_packets</span><span class="p">),</span>
+            <span class="n">no_of_virtual_packets</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">montecarlo</span><span class="o">.</span><span class="n">no_of_virtual_packets</span><span class="p">),</span>
+            <span class="n">luminosity_nu_start</span><span class="o">=</span><span class="n">luminosity_nu_start</span><span class="p">,</span>
+            <span class="n">luminosity_nu_end</span><span class="o">=</span><span class="n">luminosity_nu_end</span><span class="p">,</span>
+            <span class="n">last_no_of_packets</span><span class="o">=</span><span class="n">last_no_of_packets</span><span class="p">,</span>
+            <span class="n">luminosity_requested</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">supernova</span><span class="o">.</span><span class="n">luminosity_requested</span><span class="o">.</span><span class="n">cgs</span><span class="p">,</span>
+            <span class="n">convergence_strategy</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">montecarlo</span><span class="o">.</span><span class="n">convergence_strategy</span><span class="p">,</span>
+            <span class="n">nthreads</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">montecarlo</span><span class="o">.</span><span class="n">nthreads</span><span class="p">,</span>
+        <span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2013-2021, TARDIS Collaboration.
+      <span class="lastupdated">
+        Last updated on 12 Jul 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

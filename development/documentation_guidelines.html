@@ -1,0 +1,340 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Documentation Guidelines &mdash; tardis v2021.7.12.0.dev3+g7d3899ed</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/tardis_logo.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Documentation Preview" href="documentation_preview.html" />
+    <link rel="prev" title="General Workflow to add a new feature" href="git_workflow.html" />
+    <link href="../_static/tardis.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> tardis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2021.7.12.0.dev3+g7d3899ed
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart/quickstart.html">Quickstart for TARDIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Input/Output</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../io/configuration/index.html">Configuration (Required Input)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/optional/index.html">Optional Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/visualization/index.html">Visualization Tools &amp; Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/output/index.html">Additional Outputs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Physics Walkthrough</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../physics/setup/index.html">Setting Up the Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../physics/montecarlo/index.html">Monte Carlo Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../physics/est_and_conv/index.html">Estimators and Convergence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../physics/spectrum/index.html">Spectrum Generation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Research with TARDIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team &amp; Credits</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../team_and_governance/index.html">Team and Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">Credits &amp; Publication Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CODE_OF_CONDUCT.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors.html">Sponsors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to TARDIS</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../CONTRIBUTING.html">Contribution Guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Developer Workflow</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="issues.html">Reporting Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_workflow.html">General Workflow to add a new feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_workflow.html#preparation-and-working-with-git">Preparation and Working with Git</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Documentation Guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#documenting-the-code-you-write">Documenting the code you write</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-documentation-locally">Building documentation locally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-the-built-documentation-in-your-pr">Sharing the built documentation in your PR</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation_preview.html">Documentation Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running_tests.html">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_quality.html">Code Quality Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_faq.html">Developer FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#tardis-core-team-instructions">TARDIS core team Instructions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap.html">Development Roadmap</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">tardis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../zreferences.html">TARDIS Papers and useful References</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Outdated</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../outdated/index.html">Outdated Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">tardis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Developer Workflow</a> &raquo;</li>
+        
+      <li>Documentation Guidelines</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/development/documentation_guidelines.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="documentation-guidelines">
+<span id="id1"></span><h1>Documentation Guidelines<a class="headerlink" href="#documentation-guidelines" title="Permalink to this headline">¶</a></h1>
+<p>High-quality and consistent documentation is very important at TARDIS. It allows new users to find out how to do something specific using TARDIS, as well as helps developers (like you!) to understand the best practices.</p>
+<p>TARDIS uses the popular Python documentation generator <a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a>. Sphinx translates a set of plain text source files (often written in <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">reStructuredText</a>) to HTML files, automatically producing cross-references, indices, etc. If you haven’t worked with Sphinx before, you should first read their <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/quickstart.html">quickstart</a> guide.</p>
+<div class="section" id="documenting-the-code-you-write">
+<h2>Documenting the code you write<a class="headerlink" href="#documenting-the-code-you-write" title="Permalink to this headline">¶</a></h2>
+<p>When making or adding changes to the functionality of an aspect of TARDIS, an example notebook or .rst file should be created to demonstrate how it works. A good example of this is the <a class="reference external" href="https://tardis-sn.github.io/tardis/quickstart/quickstart.html">quickstart notebook</a> which gives an overview of how TARDIS works. You will also need to add the .rst (or notebook) file’s path within the relevant <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> file - it is usually present within the same (or parent) directory where you’ve created your file. For example, when the documentation was created for <a class="reference external" href="https://tardis-sn.github.io/tardis/research/research_done_using_TARDIS/research_papers.html">research papers that used TARDIS</a>, the toctree in <a class="reference external" href="https://github.com/tardis-sn/tardis/blob/master/docs/research/index.rst">this index file</a> was edited to add the path to the new .rst file.</p>
+<p>Besides this, the functions and classes in your code must always contain <strong>docstrings</strong>. Read <a class="reference internal" href="code_quality.html#docstrings"><span class="std std-ref">this section</span></a> of our code quality guidelines to understand their importance and how they should be formatted. Sphinx uses these docstrings to auto-generate the <a class="reference external" href="https://tardis-sn.github.io/tardis/api/modules.html">API documentation</a> for entire TARDIS package. Please make sure that you have correctly formatted the docstrings by checking how the corresponding module’s API looks once you build the documentation.</p>
+</div>
+<div class="section" id="building-documentation-locally">
+<h2>Building documentation locally<a class="headerlink" href="#building-documentation-locally" title="Permalink to this headline">¶</a></h2>
+<p>To build TARDIS documentation locally, use the following commands:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">docs</span>
+<span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>If you’re working on a fresh local copy of the TARDIS repository, you might need to do <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span></code> before executing these commands.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">DISABLE_NBSPHINX=1</span> <span class="pre">make</span> <span class="pre">html</span></code> to disable notebook rendering (fast mode).</p></li>
+</ul>
+</div>
+<p>After running this command, you can find the built docs (i.e. HTML webpages) in <code class="docutils literal notranslate"><span class="pre">docs/_build</span></code>. Open the <code class="docutils literal notranslate"><span class="pre">index.html</span></code> in your browser to see how the documentation looks like with your edits. Navigate to page where you made changes or file that you added to check whether it looks as intended or not.</p>
+</div>
+<div class="section" id="sharing-the-built-documentation-in-your-pr">
+<h2>Sharing the built documentation in your PR<a class="headerlink" href="#sharing-the-built-documentation-in-your-pr" title="Permalink to this headline">¶</a></h2>
+<p>When you make edits in TARDIS documentation and submit a PR, we can only see the changes in source files in GitHub files diff, but not the built documentation (webpages). This is usually fine unless you have made changes in the way documentation pages are structured or anything that affects lot of files. In such cases, you should share the preview of documentation with your changes by building it online. The steps to do this are described <a class="reference internal" href="documentation_preview.html#doc-preview"><span class="std std-ref">here</span></a>. This will help us (the reviewers of your PR) to check how the documentation will look once your PR is merged.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="documentation_preview.html" class="btn btn-neutral float-right" title="Documentation Preview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="git_workflow.html" class="btn btn-neutral float-left" title="General Workflow to add a new feature" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2013-2021, TARDIS Collaboration.
+      <span class="lastupdated">
+        Last updated on 12 Jul 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

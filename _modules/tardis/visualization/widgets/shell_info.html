@@ -1,0 +1,779 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>tardis.visualization.widgets.shell_info &mdash; tardis v2021.7.12.0.dev3+g7d3899ed</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/plot_directive.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/tardis_logo.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link href="../../../../_static/tardis.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> tardis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2021.7.12.0.dev3+g7d3899ed
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickstart/quickstart.html">Quickstart for TARDIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Input/Output</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/configuration/index.html">Configuration (Required Input)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/optional/index.html">Optional Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/visualization/index.html">Visualization Tools &amp; Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/output/index.html">Additional Outputs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Physics Walkthrough</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/setup/index.html">Setting Up the Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/montecarlo/index.html">Monte Carlo Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/est_and_conv/index.html">Estimators and Convergence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/spectrum/index.html">Spectrum Generation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Research with TARDIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../research/index.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team &amp; Credits</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../team_and_governance/index.html">Team and Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../credits.html">Credits &amp; Publication Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CODE_OF_CONDUCT.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../sponsors.html">Sponsors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to TARDIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CONTRIBUTING.html">Contribution Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../development/index.html">Developer Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CHANGELOG.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../roadmap.html">Development Roadmap</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/modules.html">tardis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zreferences.html">TARDIS Papers and useful References</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Outdated</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../outdated/index.html">Outdated Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tardis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tardis.visualization.widgets.shell_info</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tardis.visualization.widgets.shell_info</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">tardis.base</span> <span class="kn">import</span> <span class="n">run_tardis</span>
+<span class="kn">from</span> <span class="nn">tardis.io.atom_data.util</span> <span class="kn">import</span> <span class="n">download_atom_data</span>
+<span class="kn">from</span> <span class="nn">tardis.util.base</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">atomic_number2element_symbol</span><span class="p">,</span>
+    <span class="n">species_tuple_to_string</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">tardis.simulation</span> <span class="kn">import</span> <span class="n">Simulation</span>
+<span class="kn">from</span> <span class="nn">tardis.visualization.widgets.util</span> <span class="kn">import</span> <span class="n">create_table_widget</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">ipw</span>
+
+
+<div class="viewcode-block" id="BaseShellInfo"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.shell_info.html#tardis.visualization.widgets.shell_info.BaseShellInfo">[docs]</a><span class="k">class</span> <span class="nc">BaseShellInfo</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;The simulation information that is used by shell info widget&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">t_radiative</span><span class="p">,</span>
+        <span class="n">w</span><span class="p">,</span>
+        <span class="n">abundance</span><span class="p">,</span>
+        <span class="n">number_density</span><span class="p">,</span>
+        <span class="n">ion_number_density</span><span class="p">,</span>
+        <span class="n">level_number_density</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize the object with all simulation properties in use</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        t_radiative : array_like</span>
+<span class="sd">            Radiative Temperature of each shell of simulation</span>
+<span class="sd">        w : array_like</span>
+<span class="sd">            Dilution Factor (W) of each shell of simulation model</span>
+<span class="sd">        abundance : pandas.DataFrame</span>
+<span class="sd">            Fractional abundance of elements where row labels are atomic number</span>
+<span class="sd">            and column labels are shell number</span>
+<span class="sd">        number_density : pandas.DataFrame</span>
+<span class="sd">            Number densities of elements where row labels are atomic number and</span>
+<span class="sd">            column labels are shell numbers</span>
+<span class="sd">        ion_number_density : pandas.DataFrame</span>
+<span class="sd">            Number densities of ions where rows are multi-indexed with (atomic</span>
+<span class="sd">            number, ion number) and column labels are shell number</span>
+<span class="sd">        level_number_density : pandas.DataFrame</span>
+<span class="sd">            Number densities of levels where rows are multi-indexed with (atomic</span>
+<span class="sd">            number, ion number, level number) and column labels are shell number</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_radiative</span> <span class="o">=</span> <span class="n">t_radiative</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">abundance</span> <span class="o">=</span> <span class="n">abundance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">number_density</span> <span class="o">=</span> <span class="n">number_density</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ion_number_density</span> <span class="o">=</span> <span class="n">ion_number_density</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">level_number_density</span> <span class="o">=</span> <span class="n">level_number_density</span>
+
+<div class="viewcode-block" id="BaseShellInfo.shells_data"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.shell_info.html#tardis.visualization.widgets.shell_info.BaseShellInfo.shells_data">[docs]</a>    <span class="k">def</span> <span class="nf">shells_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generates shells data in a form that can be used by a table widget</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pandas.DataFrame</span>
+<span class="sd">            Dataframe containing Rad. Temp. and W against each shell of</span>
+<span class="sd">            simulation model</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">shells_temp_w</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="p">{</span><span class="s2">&quot;Rad. Temp.&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_radiative</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">}</span>
+        <span class="p">)</span>
+        <span class="n">shells_temp_w</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span>
+            <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t_radiative</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="p">)</span>  <span class="c1"># Overwrite index</span>
+        <span class="n">shells_temp_w</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Shell No.&quot;</span>
+        <span class="c1"># Format to string to make qgrid show values in scientific notations</span>
+        <span class="k">return</span> <span class="n">shells_temp_w</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseShellInfo.element_count"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.shell_info.html#tardis.visualization.widgets.shell_info.BaseShellInfo.element_count">[docs]</a>    <span class="k">def</span> <span class="nf">element_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shell_num</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generates fractional abundance of elements present in a specific</span>
+<span class="sd">        shell in a form that can be used by a table widget</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        shell_num : int</span>
+<span class="sd">            Shell number (note: starts from 1, not 0 which is what simulation</span>
+<span class="sd">            model use)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pandas.DataFrame</span>
+<span class="sd">            Dataframe containing element symbol and fractional abundance in a</span>
+<span class="sd">            specific shell, against each atomic number</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">element_count_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">abundance</span><span class="p">[</span><span class="n">shell_num</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">element_count_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Z&quot;</span>
+        <span class="n">element_count_data</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;Element&quot;</span><span class="p">:</span> <span class="n">element_count_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+                    <span class="n">atomic_number2element_symbol</span>
+                <span class="p">),</span>
+                <span class="c1"># Format to string to show in scientific notation</span>
+                <span class="sa">f</span><span class="s2">&quot;Frac. Ab. (Shell </span><span class="si">{</span><span class="n">shell_num</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">:</span> <span class="n">element_count_data</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+                    <span class="s2">&quot;</span><span class="si">{:.6e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span>
+                <span class="p">),</span>
+            <span class="p">}</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseShellInfo.ion_count"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.shell_info.html#tardis.visualization.widgets.shell_info.BaseShellInfo.ion_count">[docs]</a>    <span class="k">def</span> <span class="nf">ion_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atomic_num</span><span class="p">,</span> <span class="n">shell_num</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generates fractional abundance of ions of a specific element and</span>
+<span class="sd">        shell, in a form that can be used by a table widget</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        atomic_num : int</span>
+<span class="sd">            Atomic number of element</span>
+<span class="sd">        shell_num : int</span>
+<span class="sd">            Shell number (note: starts from 1, not 0 which is what simulation</span>
+<span class="sd">            model use)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pandas.DataFrame</span>
+<span class="sd">            Dataframe containing ion specie and fractional abundance for a</span>
+<span class="sd">            specific element, against each ion number</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ion_num_density</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ion_number_density</span><span class="p">[</span><span class="n">shell_num</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">atomic_num</span><span class="p">]</span>
+        <span class="n">element_num_density</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_density</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">atomic_num</span><span class="p">,</span> <span class="n">shell_num</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">ion_count_data</span> <span class="o">=</span> <span class="n">ion_num_density</span> <span class="o">/</span> <span class="n">element_num_density</span>  <span class="c1"># Normalization</span>
+        <span class="n">ion_count_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Ion&quot;</span>
+        <span class="n">ion_count_data</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;Species&quot;</span><span class="p">:</span> <span class="n">ion_count_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+                    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">species_tuple_to_string</span><span class="p">((</span><span class="n">atomic_num</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+                <span class="p">),</span>
+                <span class="sa">f</span><span class="s2">&quot;Frac. Ab. (Z=</span><span class="si">{</span><span class="n">atomic_num</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">:</span> <span class="n">ion_count_data</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+                    <span class="s2">&quot;</span><span class="si">{:.6e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span>
+                <span class="p">),</span>
+            <span class="p">}</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseShellInfo.level_count"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.shell_info.html#tardis.visualization.widgets.shell_info.BaseShellInfo.level_count">[docs]</a>    <span class="k">def</span> <span class="nf">level_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ion</span><span class="p">,</span> <span class="n">atomic_num</span><span class="p">,</span> <span class="n">shell_num</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generates fractional abundance of levels of a specific ion, element</span>
+<span class="sd">        and shell, in a form that can be used by a table widget</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ion : int</span>
+<span class="sd">            Ion number (note: starts from 0, same what is used by simulation</span>
+<span class="sd">            model)</span>
+<span class="sd">        atomic_num : int</span>
+<span class="sd">            Atomic number of element</span>
+<span class="sd">        shell_num : int</span>
+<span class="sd">            Shell number (note: starts from 1, not 0 which is what simulation</span>
+<span class="sd">            model use)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pandas.DataFrame</span>
+<span class="sd">            Dataframe containing fractional abundance for a specific ion,</span>
+<span class="sd">            against each level number</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">level_num_density</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">level_number_density</span><span class="p">[</span><span class="n">shell_num</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+            <span class="n">atomic_num</span><span class="p">,</span> <span class="n">ion</span>
+        <span class="p">]</span>
+        <span class="n">ion_num_density</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ion_number_density</span><span class="p">[</span><span class="n">shell_num</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+            <span class="n">atomic_num</span><span class="p">,</span> <span class="n">ion</span>
+        <span class="p">]</span>
+        <span class="n">level_count_data</span> <span class="o">=</span> <span class="n">level_num_density</span> <span class="o">/</span> <span class="n">ion_num_density</span>  <span class="c1"># Normalization</span>
+        <span class="n">level_count_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Level&quot;</span>
+        <span class="n">level_count_data</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Frac. Ab. (Ion=</span><span class="si">{</span><span class="n">ion</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="n">level_count_data</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">level_count_data</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.6e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="SimulationShellInfo"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.shell_info.html#tardis.visualization.widgets.shell_info.SimulationShellInfo">[docs]</a><span class="k">class</span> <span class="nc">SimulationShellInfo</span><span class="p">(</span><span class="n">BaseShellInfo</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The simulation information that is used by shell info widget, obtained</span>
+<span class="sd">    from a TARDIS Simulation object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sim_model</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize the object with TARDIS Simulation object</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        sim_model : tardis.simulation.Simulation</span>
+<span class="sd">            TARDIS Simulation object produced by running a simulation</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">sim_model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">t_radiative</span><span class="p">,</span>
+            <span class="n">sim_model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">w</span><span class="p">,</span>
+            <span class="n">sim_model</span><span class="o">.</span><span class="n">plasma</span><span class="o">.</span><span class="n">abundance</span><span class="p">,</span>
+            <span class="n">sim_model</span><span class="o">.</span><span class="n">plasma</span><span class="o">.</span><span class="n">number_density</span><span class="p">,</span>
+            <span class="n">sim_model</span><span class="o">.</span><span class="n">plasma</span><span class="o">.</span><span class="n">ion_number_density</span><span class="p">,</span>
+            <span class="n">sim_model</span><span class="o">.</span><span class="n">plasma</span><span class="o">.</span><span class="n">level_number_density</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HDFShellInfo"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.shell_info.html#tardis.visualization.widgets.shell_info.HDFShellInfo">[docs]</a><span class="k">class</span> <span class="nc">HDFShellInfo</span><span class="p">(</span><span class="n">BaseShellInfo</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The simulation information that is used by shell info widget, obtained</span>
+<span class="sd">    from a simulation HDF file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hdf_fpath</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize the object with a simulation HDF file</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        hdf_fpath : str</span>
+<span class="sd">            A valid path to a simulation HDF file (HDF file must be created</span>
+<span class="sd">            from a TARDIS Simulation object using :code:`to_hdf` method with</span>
+<span class="sd">            default arguments)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">hdf_fpath</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">sim_data</span><span class="p">:</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+                <span class="n">sim_data</span><span class="p">[</span><span class="s2">&quot;/simulation/model/t_radiative&quot;</span><span class="p">],</span>
+                <span class="n">sim_data</span><span class="p">[</span><span class="s2">&quot;/simulation/model/w&quot;</span><span class="p">],</span>
+                <span class="n">sim_data</span><span class="p">[</span><span class="s2">&quot;/simulation/plasma/abundance&quot;</span><span class="p">],</span>
+                <span class="n">sim_data</span><span class="p">[</span><span class="s2">&quot;/simulation/plasma/number_density&quot;</span><span class="p">],</span>
+                <span class="n">sim_data</span><span class="p">[</span><span class="s2">&quot;/simulation/plasma/ion_number_density&quot;</span><span class="p">],</span>
+                <span class="n">sim_data</span><span class="p">[</span><span class="s2">&quot;/simulation/plasma/level_number_density&quot;</span><span class="p">],</span>
+            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ShellInfoWidget"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.shell_info.html#tardis.visualization.widgets.shell_info.ShellInfoWidget">[docs]</a><span class="k">class</span> <span class="nc">ShellInfoWidget</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;The Shell Info Widget to explore abundances in different shells.</span>
+
+<span class="sd">    It consists of four interlinked table widgets - shells table; element count,</span>
+<span class="sd">    ion count and level count tables - allowing to explore fractional abundances</span>
+<span class="sd">    all the way from elements, to ions, to levels by clicking on the rows of</span>
+<span class="sd">    tables.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shell_info_data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize the object with the shell information of a simulation</span>
+<span class="sd">        model</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        shell_info_data : subclass of BaseShellInfo</span>
+<span class="sd">            Shell information object constructed from Simulation object or HDF</span>
+<span class="sd">            file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">shell_info_data</span>
+
+        <span class="c1"># Creating the shells data table widget</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shells_table</span> <span class="o">=</span> <span class="n">create_table_widget</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shells_data</span><span class="p">(),</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">35</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Creating the element count table widget</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">element_count_table</span> <span class="o">=</span> <span class="n">create_table_widget</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">element_count</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shells_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+            <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">55</span><span class="p">],</span>
+            <span class="n">changeable_col</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># since last column will change names</span>
+                <span class="c1"># Shells table index will give all possible shell numbers</span>
+                <span class="s2">&quot;other_names&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="sa">f</span><span class="s2">&quot;Frac. Ab. (Shell </span><span class="si">{</span><span class="n">shell_num</span><span class="si">}</span><span class="s2">)&quot;</span>
+                    <span class="k">for</span> <span class="n">shell_num</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">shells_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">index</span>
+                <span class="p">],</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Creating the ion count table widget</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ion_count_table</span> <span class="o">=</span> <span class="n">create_table_widget</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ion_count</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">element_count_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">shells_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="p">),</span>
+            <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+            <span class="n">changeable_col</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                <span class="c1"># Since element are same for each shell thus previous table</span>
+                <span class="c1"># (element counts for shell 1) will give all possible elements</span>
+                <span class="s2">&quot;other_names&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="sa">f</span><span class="s2">&quot;Frac. Ab. (Z=</span><span class="si">{</span><span class="n">atomic_num</span><span class="si">}</span><span class="s2">)&quot;</span>
+                    <span class="k">for</span> <span class="n">atomic_num</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_count_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">index</span>
+                <span class="p">],</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Creating the level count table widget</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">level_count_table</span> <span class="o">=</span> <span class="n">create_table_widget</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">level_count</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ion_count_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">element_count_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">shells_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="p">),</span>
+            <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">],</span>
+            <span class="n">changeable_col</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                <span class="c1"># Ion values range from 0 to max atomic_num present in</span>
+                <span class="c1"># element count table</span>
+                <span class="s2">&quot;other_names&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="sa">f</span><span class="s2">&quot;Frac. Ab. (Ion=</span><span class="si">{</span><span class="n">ion</span><span class="si">}</span><span class="s2">)&quot;</span>
+                    <span class="k">for</span> <span class="n">ion</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span>
+                        <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_count_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+                    <span class="p">)</span>
+                <span class="p">],</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="ShellInfoWidget.update_element_count_table"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.shell_info.html#tardis.visualization.widgets.shell_info.ShellInfoWidget.update_element_count_table">[docs]</a>    <span class="k">def</span> <span class="nf">update_element_count_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">qgrid_widget</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Event listener to update the data in element count table widget based</span>
+<span class="sd">        on interaction (row selected event) in shells table widget.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        event : dict</span>
+<span class="sd">            Dictionary that holds information about event (see Notes section)</span>
+<span class="sd">        qgrid_widget : qgrid.QgridWidget</span>
+<span class="sd">            QgridWidget instance that fired the event (see Notes section)</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        You will never need to pass any of these arguments explicitly. This is</span>
+<span class="sd">        the expected signature of the function passed to :code:`handler` argument</span>
+<span class="sd">        of :code:`on` method of a table widget (qgrid.QgridWidget object) as</span>
+<span class="sd">        explained in `qrid documentation &lt;https://qgrid.readthedocs.io/en/latest/#qgrid.QgridWidget.on&gt;`_.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Get shell number from row selected in shells_table</span>
+        <span class="n">shell_num</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="c1"># Update data in element_count_table</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">element_count_table</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">element_count</span><span class="p">(</span><span class="n">shell_num</span><span class="p">)</span>
+
+        <span class="c1"># Get atomic_num of 0th row of element_count_table</span>
+        <span class="n">atomic_num0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_count_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># Also update next table (ion counts) by triggering its event listener</span>
+        <span class="c1"># Listener won&#39;t trigger if last row selected in element_count_table was also 0th</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_count_table</span><span class="o">.</span><span class="n">get_selected_rows</span><span class="p">()</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">element_count_table</span><span class="o">.</span><span class="n">change_selection</span><span class="p">([])</span>  <span class="c1"># Unselect rows</span>
+        <span class="c1"># Select 0th row in count table which will trigger update_ion_count_table</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">element_count_table</span><span class="o">.</span><span class="n">change_selection</span><span class="p">([</span><span class="n">atomic_num0</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="ShellInfoWidget.update_ion_count_table"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.shell_info.html#tardis.visualization.widgets.shell_info.ShellInfoWidget.update_ion_count_table">[docs]</a>    <span class="k">def</span> <span class="nf">update_ion_count_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">qgrid_widget</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Event listener to update the data in ion count table widget based</span>
+<span class="sd">        on interaction (row selected event) in element count table widget.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        event : dict</span>
+<span class="sd">            Dictionary that holds information about event (see Notes section)</span>
+<span class="sd">        qgrid_widget : qgrid.QgridWidget</span>
+<span class="sd">            QgridWidget instance that fired the event (see Notes section)</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        You will never need to pass any of these arguments explicitly. This is</span>
+<span class="sd">        the expected signature of the function passed to :code:`handler` argument</span>
+<span class="sd">        of :code:`on` method of a table widget (qgrid.QgridWidget object) as</span>
+<span class="sd">        explained in `qrid documentation &lt;https://qgrid.readthedocs.io/en/latest/#qgrid.QgridWidget.on&gt;`_.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Don&#39;t execute function if no row was selected, implicitly i.e. by api</span>
+        <span class="k">if</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="p">[]</span> <span class="ow">and</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;api&quot;</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Get shell no. &amp; atomic_num from rows selected in previous tables</span>
+        <span class="n">shell_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shells_table</span><span class="o">.</span><span class="n">get_selected_rows</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">atomic_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_count_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">event</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span>
+
+        <span class="c1"># Update data in ion_count_table</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ion_count_table</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ion_count</span><span class="p">(</span><span class="n">atomic_num</span><span class="p">,</span> <span class="n">shell_num</span><span class="p">)</span>
+
+        <span class="c1"># Also update next table (level counts) by triggering its event listener</span>
+        <span class="n">ion0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ion_count_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ion_count_table</span><span class="o">.</span><span class="n">get_selected_rows</span><span class="p">()</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ion_count_table</span><span class="o">.</span><span class="n">change_selection</span><span class="p">([])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ion_count_table</span><span class="o">.</span><span class="n">change_selection</span><span class="p">([</span><span class="n">ion0</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="ShellInfoWidget.update_level_count_table"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.shell_info.html#tardis.visualization.widgets.shell_info.ShellInfoWidget.update_level_count_table">[docs]</a>    <span class="k">def</span> <span class="nf">update_level_count_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">qgrid_widget</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Event listener to update the data in level count table widget based</span>
+<span class="sd">        on interaction (row selected event) in ion count table widget.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        event : dict</span>
+<span class="sd">            Dictionary that holds information about event (see Notes section)</span>
+<span class="sd">        qgrid_widget : qgrid.QgridWidget</span>
+<span class="sd">            QgridWidget instance that fired the event (see Notes section)</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        You will never need to pass any of these arguments explicitly. This is</span>
+<span class="sd">        the expected signature of the function passed to :code:`handler` argument</span>
+<span class="sd">        of :code:`on` method of a table widget (qgrid.QgridWidget object) as</span>
+<span class="sd">        explained in `qrid documentation &lt;https://qgrid.readthedocs.io/en/latest/#qgrid.QgridWidget.on&gt;`_.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Don&#39;t execute function if no row was selected implicitly (by api)</span>
+        <span class="k">if</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="p">[]</span> <span class="ow">and</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;api&quot;</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Get shell no., atomic_num, ion from selected rows in previous tables</span>
+        <span class="n">shell_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shells_table</span><span class="o">.</span><span class="n">get_selected_rows</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">atomic_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_count_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">element_count_table</span><span class="o">.</span><span class="n">get_selected_rows</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="p">]</span>
+        <span class="n">ion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ion_count_table</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">event</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span>
+
+        <span class="c1"># Update data in level_count_table</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">level_count_table</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">level_count</span><span class="p">(</span>
+            <span class="n">ion</span><span class="p">,</span> <span class="n">atomic_num</span><span class="p">,</span> <span class="n">shell_num</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="ShellInfoWidget.display"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.shell_info.html#tardis.visualization.widgets.shell_info.ShellInfoWidget.display">[docs]</a>    <span class="k">def</span> <span class="nf">display</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">shells_table_width</span><span class="o">=</span><span class="s2">&quot;30%&quot;</span><span class="p">,</span>
+        <span class="n">element_count_table_width</span><span class="o">=</span><span class="s2">&quot;24%&quot;</span><span class="p">,</span>
+        <span class="n">ion_count_table_width</span><span class="o">=</span><span class="s2">&quot;24%&quot;</span><span class="p">,</span>
+        <span class="n">level_count_table_width</span><span class="o">=</span><span class="s2">&quot;18%&quot;</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">layout_kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Display the shell info widget by putting all component widgets nicely</span>
+<span class="sd">        together and allowing interaction between the table widgets</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        shells_table_width : str, optional</span>
+<span class="sd">            CSS :code:`width` property value for shells table, by default &#39;30%&#39;</span>
+<span class="sd">        element_count_table_width : str, optional</span>
+<span class="sd">            CSS :code:`width` property value for element count table, by default &#39;24%&#39;</span>
+<span class="sd">        ion_count_table_width : str, optional</span>
+<span class="sd">            CSS :code:`width` property value for ion count table, by default &#39;24%&#39;</span>
+<span class="sd">        level_count_table_width : str, optional</span>
+<span class="sd">            CSS :code:`width` property value for level count table, by default &#39;18%&#39;</span>
+
+<span class="sd">        Other Parameters</span>
+<span class="sd">        ----------------</span>
+<span class="sd">        **layout_kwargs</span>
+<span class="sd">            Any valid CSS properties to be passed to the :code:`layout` attribute</span>
+<span class="sd">            of table widgets container (HTML :code:`div`) as explained in</span>
+<span class="sd">            `ipywidgets documentation &lt;https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Styling.html#The-layout-attribute&gt;`_</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ipywidgets.Box</span>
+<span class="sd">            Shell info widget containing all component widgets</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># CSS properties of the layout of shell info tables container</span>
+        <span class="n">tables_container_layout</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">display</span><span class="o">=</span><span class="s2">&quot;flex&quot;</span><span class="p">,</span>
+            <span class="n">align_items</span><span class="o">=</span><span class="s2">&quot;flex-start&quot;</span><span class="p">,</span>
+            <span class="n">justify_content</span><span class="o">=</span><span class="s2">&quot;space-between&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">tables_container_layout</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">layout_kwargs</span><span class="p">)</span>
+
+        <span class="c1"># Setting tables&#39; widths</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shells_table</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">shells_table_width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">element_count_table</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">element_count_table_width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ion_count_table</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">ion_count_table_width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">level_count_table</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">level_count_table_width</span>
+
+        <span class="c1"># Attach event listeners to table widgets</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shells_table</span><span class="o">.</span><span class="n">on</span><span class="p">(</span>
+            <span class="s2">&quot;selection_changed&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_element_count_table</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">element_count_table</span><span class="o">.</span><span class="n">on</span><span class="p">(</span>
+            <span class="s2">&quot;selection_changed&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_ion_count_table</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ion_count_table</span><span class="o">.</span><span class="n">on</span><span class="p">(</span>
+            <span class="s2">&quot;selection_changed&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_level_count_table</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Putting all table widgets in a container styled with tables_container_layout</span>
+        <span class="n">shell_info_tables_container</span> <span class="o">=</span> <span class="n">ipw</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">shells_table</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">element_count_table</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ion_count_table</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">level_count_table</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="n">layout</span><span class="o">=</span><span class="n">ipw</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="o">**</span><span class="n">tables_container_layout</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shells_table</span><span class="o">.</span><span class="n">change_selection</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="c1"># Notes text explaining how to interpret tables widgets&#39; data</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">ipw</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span>
+            <span class="s2">&quot;&lt;b&gt;Frac. Ab.&lt;/b&gt; denotes &lt;i&gt;Fractional Abundances&lt;/i&gt; (i.e all &quot;</span>
+            <span class="s2">&quot;values sum to 1)&lt;br&gt;&lt;b&gt;W&lt;/b&gt; denotes &lt;i&gt;Dilution Factor&lt;/i&gt; and &quot;</span>
+            <span class="s2">&quot;&lt;b&gt;Rad. Temp.&lt;/b&gt; is &lt;i&gt;Radiative Temperature (in K)&lt;/i&gt;&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Put text horizontally before shell info container</span>
+        <span class="n">shell_info_widget</span> <span class="o">=</span> <span class="n">ipw</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">text</span><span class="p">,</span> <span class="n">shell_info_tables_container</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">shell_info_widget</span></div></div>
+
+
+<div class="viewcode-block" id="shell_info_from_simulation"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.shell_info.html#tardis.visualization.widgets.shell_info.shell_info_from_simulation">[docs]</a><span class="k">def</span> <span class="nf">shell_info_from_simulation</span><span class="p">(</span><span class="n">sim_model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create shell info widget from a TARDIS simulation object</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sim_model : tardis.simulation.Simulation</span>
+<span class="sd">        TARDIS Simulation object produced by running a simulation</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ShellInfoWidget</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">shell_info_data</span> <span class="o">=</span> <span class="n">SimulationShellInfo</span><span class="p">(</span><span class="n">sim_model</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ShellInfoWidget</span><span class="p">(</span><span class="n">shell_info_data</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="shell_info_from_hdf"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.shell_info.html#tardis.visualization.widgets.shell_info.shell_info_from_hdf">[docs]</a><span class="k">def</span> <span class="nf">shell_info_from_hdf</span><span class="p">(</span><span class="n">hdf_fpath</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create shell info widget from a simulation HDF file</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    hdf_fpath : str</span>
+<span class="sd">        A valid path to a simulation HDF file (HDF file must be created</span>
+<span class="sd">        from a TARDIS Simulation object using :code:`to_hdf` method with</span>
+<span class="sd">        default arguments)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ShellInfoWidget</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">shell_info_data</span> <span class="o">=</span> <span class="n">HDFShellInfo</span><span class="p">(</span><span class="n">hdf_fpath</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ShellInfoWidget</span><span class="p">(</span><span class="n">shell_info_data</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2013-2021, TARDIS Collaboration.
+      <span class="lastupdated">
+        Last updated on 12 Jul 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

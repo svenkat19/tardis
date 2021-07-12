@@ -1,0 +1,7 @@
+tardis.scripts.tardis module
+============================
+
+.. automodule:: tardis.scripts.tardis
+   :members:
+   :undoc-members:
+   :show-inheritance:

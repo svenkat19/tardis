@@ -1,0 +1,489 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>tardis.visualization.widgets.util &mdash; tardis v2021.7.12.0.dev3+g7d3899ed</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/plot_directive.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/tardis_logo.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link href="../../../../_static/tardis.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> tardis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2021.7.12.0.dev3+g7d3899ed
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickstart/quickstart.html">Quickstart for TARDIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Input/Output</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/configuration/index.html">Configuration (Required Input)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/optional/index.html">Optional Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/visualization/index.html">Visualization Tools &amp; Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/output/index.html">Additional Outputs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Physics Walkthrough</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/setup/index.html">Setting Up the Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/montecarlo/index.html">Monte Carlo Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/est_and_conv/index.html">Estimators and Convergence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/spectrum/index.html">Spectrum Generation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Research with TARDIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../research/index.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team &amp; Credits</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../team_and_governance/index.html">Team and Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../credits.html">Credits &amp; Publication Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CODE_OF_CONDUCT.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../sponsors.html">Sponsors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to TARDIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CONTRIBUTING.html">Contribution Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../development/index.html">Developer Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CHANGELOG.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../roadmap.html">Development Roadmap</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/modules.html">tardis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zreferences.html">TARDIS Papers and useful References</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Outdated</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../outdated/index.html">Outdated Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tardis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tardis.visualization.widgets.util</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tardis.visualization.widgets.util</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Utility classes and functions for widgets.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">qgrid</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">ipw</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="create_table_widget"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.util.html#tardis.visualization.widgets.util.create_table_widget">[docs]</a><span class="k">def</span> <span class="nf">create_table_widget</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">col_widths</span><span class="p">,</span> <span class="n">table_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">changeable_col</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create table widget object which supports interaction and updating the data.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : pandas.DataFrame</span>
+<span class="sd">        Data you want to display in table widget</span>
+<span class="sd">    col_widths : list</span>
+<span class="sd">        A list containing width of each column of data in order (including</span>
+<span class="sd">        the index as 1st column). The width values must be proportions of</span>
+<span class="sd">        100 i.e. they must sum to 100.</span>
+<span class="sd">    table_options : dict, optional</span>
+<span class="sd">        A dictionary to specify options to use when creating interactive table</span>
+<span class="sd">        widget (same as :grid_options: of qgrid, specified in Notes section of</span>
+<span class="sd">        their `API documentation &lt;https://qgrid.readthedocs.io/en/latest/#qgrid.show_grid&gt;_`).</span>
+<span class="sd">        Invalid keys will have no effect and valid keys will override or add to</span>
+<span class="sd">        the options used by this function.</span>
+<span class="sd">    changeable_col : dict, optional</span>
+<span class="sd">        A dictionary to specify the information about column which will</span>
+<span class="sd">        change its name when data in generated table widget updates. It</span>
+<span class="sd">        must have two keys - :code:`index` to specify index of changeable</span>
+<span class="sd">        column in dataframe :code:`data` as an integer, and :code:`other_names`</span>
+<span class="sd">        to specify all possible names changeable column will get as a list</span>
+<span class="sd">        of strings. Default value :code:`None` indicates that there is no</span>
+<span class="sd">        changable column.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    qgrid.QgridWidget</span>
+<span class="sd">        Table widget object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Setting the options to be used for creating table widgets</span>
+    <span class="n">grid_options</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;sortable&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;filterable&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;editable&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;minVisibleRows&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="n">table_options</span><span class="p">:</span>
+        <span class="n">grid_options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">table_options</span><span class="p">)</span>
+
+    <span class="n">column_options</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;minWidth&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Check whether passed col_widths list is correct or not</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">col_widths</span><span class="p">)</span> <span class="o">!=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Size of column widths list do not match with &quot;</span>
+            <span class="s2">&quot;number of columns + 1 (index) in dataframe&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Note: Since forceFitColumns is enabled by default in grid_options,</span>
+    <span class="c1"># the column widths (when all specified) get applied in proportions,</span>
+    <span class="c1"># despite their original unit is px thus it&#39;s better they sum to 100</span>
+    <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">col_widths</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Column widths are not proportions of 100 (i.e. &quot;</span>
+            <span class="s2">&quot;they do not sum to 100)&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Preparing dictionary that defines column widths</span>
+    <span class="n">cols_with_index</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+    <span class="n">column_widths_definitions</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">col_name</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="n">col_width</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">col_name</span><span class="p">,</span> <span class="n">col_width</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cols_with_index</span><span class="p">,</span> <span class="n">col_widths</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1"># We also need to define widths for different names of changeable column</span>
+    <span class="k">if</span> <span class="n">changeable_col</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">{</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;other_names&quot;</span><span class="p">}</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">changeable_col</span><span class="o">.</span><span class="n">keys</span><span class="p">())):</span>
+            <span class="n">column_widths_definitions</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="n">col_name</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="n">col_widths</span><span class="p">[</span><span class="n">changeable_col</span><span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">]]}</span>
+                    <span class="k">for</span> <span class="n">col_name</span> <span class="ow">in</span> <span class="n">changeable_col</span><span class="p">[</span><span class="s2">&quot;other_names&quot;</span><span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Changeable column dictionary does not contain &quot;</span>
+                <span class="s2">&quot;&#39;index&#39; or &#39;other_names&#39; key&quot;</span>
+            <span class="p">)</span>
+
+    <span class="c1"># Create the table widget using qgrid</span>
+    <span class="k">return</span> <span class="n">qgrid</span><span class="o">.</span><span class="n">show_grid</span><span class="p">(</span>
+        <span class="n">data</span><span class="p">,</span>
+        <span class="n">grid_options</span><span class="o">=</span><span class="n">grid_options</span><span class="p">,</span>
+        <span class="n">column_options</span><span class="o">=</span><span class="n">column_options</span><span class="p">,</span>
+        <span class="n">column_definitions</span><span class="o">=</span><span class="n">column_widths_definitions</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TableSummaryLabel"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.util.html#tardis.visualization.widgets.util.TableSummaryLabel">[docs]</a><span class="k">class</span> <span class="nc">TableSummaryLabel</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Label like widget to show summary of a qgrid table widget.</span>
+
+<span class="sd">    Also handles aligning the label with the table columns exactly like a</span>
+<span class="sd">    summary row.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_table</span><span class="p">,</span> <span class="n">table_col_widths</span><span class="p">,</span> <span class="n">label_key</span><span class="p">,</span> <span class="n">label_value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize a TableSummaryLabel for a table widget.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        target_table : qgrid.QgridWidget</span>
+<span class="sd">            Table widget whose summary label it is</span>
+<span class="sd">        table_col_widths : list</span>
+<span class="sd">            A list containing width of each column of table in order (including</span>
+<span class="sd">            the index as 1st column). The width values must be proportions of</span>
+<span class="sd">            100 i.e. they must sum to 100</span>
+<span class="sd">        label_key : str</span>
+<span class="sd">            Brief description of what label summarizes about table</span>
+<span class="sd">        label_value : int</span>
+<span class="sd">            Initial summary value of the table to be shown in label</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        TableSummaryLabel can only be created for a table with two columns</span>
+<span class="sd">        (including index as 1st column) as of now</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">table_col_widths</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                <span class="s2">&quot;Currently TableSummaryLabel can only be created for a table &quot;</span>
+                <span class="s2">&quot;widget with exactly two columns (including index column)&quot;</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_table</span> <span class="o">=</span> <span class="n">target_table</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">table_col_widths</span> <span class="o">=</span> <span class="n">table_col_widths</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create</span><span class="p">(</span><span class="n">label_key</span><span class="p">,</span> <span class="n">label_value</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TableSummaryLabel.update_and_resize"><a class="viewcode-back" href="../../../../api/tardis.visualization.widgets.util.html#tardis.visualization.widgets.util.TableSummaryLabel.update_and_resize">[docs]</a>    <span class="k">def</span> <span class="nf">update_and_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update the label value and resize it as per the size of target table.</span>
+
+<span class="sd">        Resizing is done in such a way so as to match the width of components</span>
+<span class="sd">        of label with columns of target table, making it look like another row.</span>
+<span class="sd">        This method should be called whenever there is any update in data or</span>
+<span class="sd">        layout of target table.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : int</span>
+<span class="sd">            Value to be shown in label</span>
+
+<span class="sd">        Note</span>
+<span class="sd">        ----</span>
+<span class="sd">        The width resizing operation is highly dependent on qgrid tables&#39;</span>
+<span class="sd">        layout. So it may not remain precise if there happens any CSS change</span>
+<span class="sd">        in upcoming versions of qgrid.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">table_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_table</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;px&quot;</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s2">&quot;target_table doesn&#39;t have any fixed width defined, label &quot;</span>
+                <span class="s2">&quot;cannot be resized!&quot;</span><span class="p">,</span>
+                <span class="n">exc_info</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">max_rows_allowed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_table</span><span class="o">.</span><span class="n">grid_options</span><span class="p">[</span><span class="s2">&quot;maxVisibleRows&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_table</span><span class="o">.</span><span class="n">df</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_rows_allowed</span><span class="p">:</span>
+            <span class="n">table_width</span> <span class="o">-=</span> <span class="mi">12</span>  <span class="c1"># 12px is space consumed by scroll bar of qgrid</span>
+
+        <span class="c1"># Distribute the table width in proportions of column width to label components</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span>
+            <span class="mi">0</span>
+        <span class="p">]</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">table_width</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">table_col_widths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="si">}</span><span class="s2">px&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span>
+            <span class="mi">1</span>
+        <span class="p">]</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">table_width</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">table_col_widths</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="si">}</span><span class="s2">px&quot;</span></div>
+
+    <span class="k">def</span> <span class="nf">_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create widget for TableSummaryLabel.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        key : str</span>
+<span class="sd">            Brief description of what label summarizes about target table</span>
+<span class="sd">        value : int</span>
+<span class="sd">            Initial summary value of the target table to be shown in label</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ipywidgets.Box</span>
+<span class="sd">            Widget containing all componets of label</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># WARNING: Use dictionary instead of ipw.Layout for specifying layout</span>
+        <span class="c1"># of ipywidgets, otherwise there will be unintended behavior</span>
+        <span class="n">component_layout_options</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">flex</span><span class="o">=</span><span class="s2">&quot;0 0 auto&quot;</span><span class="p">,</span>  <span class="c1"># to prevent shrinking of flex-items</span>
+            <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;0px 2px&quot;</span><span class="p">,</span>  <span class="c1"># match with header</span>
+            <span class="n">margin</span><span class="o">=</span><span class="s2">&quot;0px&quot;</span><span class="p">,</span>  <span class="c1"># remove default 1px margin</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ipw</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">ipw</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;&lt;div style=&#39;text-align:right;&#39;&gt; &lt;b&gt;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">:&lt;b&gt; &lt;/div&gt;&quot;</span><span class="p">,</span>
+                    <span class="n">layout</span><span class="o">=</span><span class="n">component_layout_options</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">ipw</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span>
+                    <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">),</span>
+                    <span class="n">layout</span><span class="o">=</span><span class="n">component_layout_options</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">],</span>
+            <span class="n">layout</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+                <span class="n">display</span><span class="o">=</span><span class="s2">&quot;flex&quot;</span><span class="p">,</span>
+                <span class="n">justify_content</span><span class="o">=</span><span class="s2">&quot;flex-start&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2013-2021, TARDIS Collaboration.
+      <span class="lastupdated">
+        Last updated on 12 Jul 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

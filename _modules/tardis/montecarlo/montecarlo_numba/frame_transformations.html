@@ -1,0 +1,364 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>tardis.montecarlo.montecarlo_numba.frame_transformations &mdash; tardis v2021.7.12.0.dev3+g7d3899ed</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/plot_directive.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/tardis_logo.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link href="../../../../_static/tardis.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> tardis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2021.7.12.0.dev3+g7d3899ed
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickstart/quickstart.html">Quickstart for TARDIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Input/Output</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/configuration/index.html">Configuration (Required Input)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/optional/index.html">Optional Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/visualization/index.html">Visualization Tools &amp; Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/output/index.html">Additional Outputs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Physics Walkthrough</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/setup/index.html">Setting Up the Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/montecarlo/index.html">Monte Carlo Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/est_and_conv/index.html">Estimators and Convergence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/spectrum/index.html">Spectrum Generation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Research with TARDIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../research/index.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team &amp; Credits</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../team_and_governance/index.html">Team and Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../credits.html">Credits &amp; Publication Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CODE_OF_CONDUCT.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../sponsors.html">Sponsors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to TARDIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CONTRIBUTING.html">Contribution Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../development/index.html">Developer Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CHANGELOG.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../roadmap.html">Development Roadmap</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/modules.html">tardis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zreferences.html">TARDIS Papers and useful References</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Outdated</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../outdated/index.html">Outdated Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tardis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tardis.montecarlo.montecarlo_numba.frame_transformations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tardis.montecarlo.montecarlo_numba.frame_transformations</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+
+<span class="kn">from</span> <span class="nn">tardis.montecarlo.montecarlo_numba</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">njit_dict_no_parallel</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">tardis.montecarlo.montecarlo_numba.numba_config</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">C_SPEED_OF_LIGHT</span><span class="p">,</span>
+    <span class="n">ENABLE_FULL_RELATIVITY</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_doppler_factor"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.frame_transformations.html#tardis.montecarlo.montecarlo_numba.frame_transformations.get_doppler_factor">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict_no_parallel</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_doppler_factor</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">time_explosion</span><span class="p">):</span>
+    <span class="n">inv_c</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">C_SPEED_OF_LIGHT</span>
+    <span class="n">inv_t</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">time_explosion</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">inv_t</span> <span class="o">*</span> <span class="n">inv_c</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ENABLE_FULL_RELATIVITY</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">get_doppler_factor_partial_relativity</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">get_doppler_factor_full_relativity</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_doppler_factor_partial_relativity"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.frame_transformations.html#tardis.montecarlo.montecarlo_numba.frame_transformations.get_doppler_factor_partial_relativity">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict_no_parallel</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_doppler_factor_partial_relativity</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">beta</span></div>
+
+
+<div class="viewcode-block" id="get_doppler_factor_full_relativity"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.frame_transformations.html#tardis.montecarlo.montecarlo_numba.frame_transformations.get_doppler_factor_full_relativity">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict_no_parallel</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_doppler_factor_full_relativity</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">beta</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">beta</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_inverse_doppler_factor"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.frame_transformations.html#tardis.montecarlo.montecarlo_numba.frame_transformations.get_inverse_doppler_factor">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict_no_parallel</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_inverse_doppler_factor</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">time_explosion</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate doppler factor for frame transformation</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    r : float</span>
+<span class="sd">    mu : float</span>
+<span class="sd">    time_explosion : float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">inv_c</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">C_SPEED_OF_LIGHT</span>
+    <span class="n">inv_t</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">time_explosion</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">inv_t</span> <span class="o">*</span> <span class="n">inv_c</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ENABLE_FULL_RELATIVITY</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">get_inverse_doppler_factor_partial_relativity</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">get_inverse_doppler_factor_full_relativity</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_inverse_doppler_factor_partial_relativity"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.frame_transformations.html#tardis.montecarlo.montecarlo_numba.frame_transformations.get_inverse_doppler_factor_partial_relativity">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict_no_parallel</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_inverse_doppler_factor_partial_relativity</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">beta</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_inverse_doppler_factor_full_relativity"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.frame_transformations.html#tardis.montecarlo.montecarlo_numba.frame_transformations.get_inverse_doppler_factor_full_relativity">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict_no_parallel</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_inverse_doppler_factor_full_relativity</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">beta</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">beta</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="calc_packet_energy_full_relativity"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.frame_transformations.html#tardis.montecarlo.montecarlo_numba.frame_transformations.calc_packet_energy_full_relativity">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict_no_parallel</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">calc_packet_energy_full_relativity</span><span class="p">(</span><span class="n">r_packet</span><span class="p">):</span>
+    <span class="c1"># accurate to 1 / gamma - according to C. Vogl</span>
+    <span class="k">return</span> <span class="n">r_packet</span><span class="o">.</span><span class="n">energy</span></div>
+
+
+<div class="viewcode-block" id="calc_packet_energy"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.frame_transformations.html#tardis.montecarlo.montecarlo_numba.frame_transformations.calc_packet_energy">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict_no_parallel</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">calc_packet_energy</span><span class="p">(</span><span class="n">r_packet</span><span class="p">,</span> <span class="n">distance_trace</span><span class="p">,</span> <span class="n">time_explosion</span><span class="p">):</span>
+    <span class="n">doppler_factor</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">distance_trace</span> <span class="o">+</span> <span class="n">r_packet</span><span class="o">.</span><span class="n">mu</span> <span class="o">*</span> <span class="n">r_packet</span><span class="o">.</span><span class="n">r</span><span class="p">)</span>
+        <span class="o">/</span> <span class="p">(</span><span class="n">time_explosion</span> <span class="o">*</span> <span class="n">C_SPEED_OF_LIGHT</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">energy</span> <span class="o">=</span> <span class="n">r_packet</span><span class="o">.</span><span class="n">energy</span> <span class="o">*</span> <span class="n">doppler_factor</span>
+    <span class="k">return</span> <span class="n">energy</span></div>
+
+
+<div class="viewcode-block" id="angle_aberration_CMF_to_LF"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.frame_transformations.html#tardis.montecarlo.montecarlo_numba.frame_transformations.angle_aberration_CMF_to_LF">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict_no_parallel</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">angle_aberration_CMF_to_LF</span><span class="p">(</span><span class="n">r_packet</span><span class="p">,</span> <span class="n">time_explosion</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts angle aberration from comoving frame to</span>
+<span class="sd">    laboratory frame.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ct</span> <span class="o">=</span> <span class="n">C_SPEED_OF_LIGHT</span> <span class="o">*</span> <span class="n">time_explosion</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="n">r_packet</span><span class="o">.</span><span class="n">r</span> <span class="o">/</span> <span class="p">(</span><span class="n">ct</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r_packet</span><span class="o">.</span><span class="n">mu</span> <span class="o">+</span> <span class="n">beta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">mu</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="angle_aberration_LF_to_CMF"><a class="viewcode-back" href="../../../../api/tardis.montecarlo.montecarlo_numba.frame_transformations.html#tardis.montecarlo.montecarlo_numba.frame_transformations.angle_aberration_LF_to_CMF">[docs]</a><span class="nd">@njit</span><span class="p">(</span><span class="o">**</span><span class="n">njit_dict_no_parallel</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">angle_aberration_LF_to_CMF</span><span class="p">(</span><span class="n">r_packet</span><span class="p">,</span> <span class="n">time_explosion</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    c code:</span>
+<span class="sd">    double beta = rpacket_get_r (packet) * storage-&gt;inverse_time_explosion * INVERSE_C;</span>
+<span class="sd">    return (mu - beta) / (1.0 - beta * mu);</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ct</span> <span class="o">=</span> <span class="n">C_SPEED_OF_LIGHT</span> <span class="o">*</span> <span class="n">time_explosion</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="n">r_packet</span><span class="o">.</span><span class="n">r</span> <span class="o">/</span> <span class="p">(</span><span class="n">ct</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">mu</span> <span class="o">-</span> <span class="n">beta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">mu</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2013-2021, TARDIS Collaboration.
+      <span class="lastupdated">
+        Last updated on 12 Jul 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
